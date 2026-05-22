@@ -1,0 +1,180 @@
+{
+  "_fv": 85,
+  "_type": "livingentity",
+  "definition": {
+    "mobName": "Quivager",
+    "mobLabel": "",
+    "mobModelName": "Modelquivager",
+    "mobModelTexture": "quivager.png",
+    "transparentModelCondition": {
+      "fixedValue": false
+    },
+    "isShakingCondition": {
+      "fixedValue": false
+    },
+    "solidBoundingBox": {
+      "fixedValue": false
+    },
+    "visualScale": {
+      "fixedValue": 1.0
+    },
+    "boundingBoxScale": {
+      "fixedValue": 1.0
+    },
+    "modelLayers": [],
+    "animations": [
+      {
+        "animation": {
+          "value": "CUSTOM:quivagerAnimation.walk"
+        },
+        "speed": 1.0,
+        "walking": true,
+        "amplitude": 1.0
+      }
+    ],
+    "modelWidth": 0.6,
+    "modelHeight": 1.8,
+    "modelShadowSize": 0.5,
+    "mountedYOffset": 0.0,
+    "hasSpawnEgg": true,
+    "spawnEggBaseColor": {
+      "value": -1,
+      "falpha": 0.0
+    },
+    "spawnEggDotColor": {
+      "value": -1,
+      "falpha": 0.0
+    },
+    "spawnEggTexture": "",
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:IllagerUniverseTab"
+      }
+    ],
+    "isBoss": false,
+    "bossBarColor": "PINK",
+    "bossBarType": "PROGRESS",
+    "equipmentMainHand": {
+      "value": ""
+    },
+    "equipmentOffHand": {
+      "value": ""
+    },
+    "equipmentHelmet": {
+      "value": ""
+    },
+    "equipmentBody": {
+      "value": ""
+    },
+    "equipmentLeggings": {
+      "value": ""
+    },
+    "equipmentBoots": {
+      "value": ""
+    },
+    "mobBehaviourType": "Raider",
+    "mobCreatureType": "UNDEFINED",
+    "attackStrength": 3,
+    "attackKnockback": 0.0,
+    "knockbackResistance": 0.0,
+    "movementSpeed": 0.3,
+    "stepHeight": 0.6,
+    "armorBaseValue": 0.0,
+    "trackingRange": 64,
+    "followRange": 16,
+    "health": 10,
+    "xpAmount": 0,
+    "waterMob": false,
+    "breatheUnderwater": {
+      "fixedValue": false
+    },
+    "pushedByFluids": {
+      "fixedValue": true
+    },
+    "flyingMob": false,
+    "inventorySize": 9,
+    "inventoryStackSize": 99,
+    "disableCollisions": false,
+    "ridable": false,
+    "canControlForward": false,
+    "canControlStrafe": false,
+    "immuneToFire": false,
+    "immuneToArrows": false,
+    "immuneToFallDamage": false,
+    "immuneToCactus": false,
+    "immuneToDrowning": false,
+    "immuneToLightning": false,
+    "immuneToPotions": false,
+    "immuneToPlayer": false,
+    "immuneToExplosion": false,
+    "immuneToTrident": false,
+    "immuneToAnvil": false,
+    "immuneToWither": false,
+    "immuneToDragonBreath": false,
+    "mobDrop": {
+      "value": ""
+    },
+    "livingSound": {
+      "value": "entity.vindication_illager.ambient"
+    },
+    "hurtSound": {
+      "value": "entity.vindication_illager.hurt"
+    },
+    "deathSound": {
+      "value": "entity.vindication_illager.death"
+    },
+    "stepSound": {
+      "value": ""
+    },
+    "raidCelebrationSound": {
+      "value": "entity.vindicator.celebrate"
+    },
+    "entityDataEntries": [
+      {
+        "min": -2147483648,
+        "max": 2147483647,
+        "name": "actionState",
+        "type": "integer",
+        "value": 0
+      }
+    ],
+    "onMobTickUpdate": {
+      "name": "QuivagerOnEntityTickUpdate"
+    },
+    "hasAI": true,
+    "aiBase": "(none)",
+    "aixml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"aitasks_container\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"java_code\"><field name=\"CODE\">goalSelector.addGoal(0, new DoNothingGoal(this));&amp;#10;goalSelector.addGoal(1, new ActionStateMobMeleeAttackGoal(this, 1.2, false));</field><next><block type=\"wander\"><field name=\"speed\">1</field><field name=\"condition\">null,null</field><next><block type=\"attack_action\"><field name=\"callhelp\">FALSE</field><field name=\"condition\">null,null</field><next><block type=\"look_around\"><field name=\"condition\">null,null</field><next><block type=\"swim_in_water\"><field name=\"condition\">null,null</field><next><block type=\"java_code\"><field name=\"CODE\">\t\tthis.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true, false));&amp;#10;\t\tthis.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, AbstractVillager.class, true, false));&amp;#10;\t\tthis.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, AbstractGolem.class, true, false));&amp;#10;}&amp;#10;&amp;#10;\tpublic int actionTicks, &amp;#10;animTicks, animTicksO;&amp;#10;\tpublic LivingEntity lockedTarget;&amp;#10;&amp;#10;\tpublic int getActionState() {&amp;#10;\t\treturn entityData.get(DATA_actionState);&amp;#10;\t}&amp;#10;&amp;#10;\tpublic void setActionState(int input) {&amp;#10;\t\tentityData.set(DATA_actionState, input);&amp;#10;\t}&amp;#10;&amp;#10;\tpublic boolean shouldNotMove() {&amp;#10;\t\treturn entityData.get(DATA_actionState) &gt; 1;&amp;#10;\t}&amp;#10;&amp;#10;\tprotected void updateSwingTime() {&amp;#10;\t\tint i = 11;&amp;#10;\t\tif (this.swinging) {&amp;#10;\t\t\t++this.swingTime;&amp;#10;\t\t\tif (this.swingTime &gt; i) {&amp;#10;\t\t\t\tthis.swingTime = 0;&amp;#10;\t\t\t\tthis.swinging = false;&amp;#10;\t\t\t}&amp;#10;\t\t} else {&amp;#10;\t\t\tthis.swingTime = 0;&amp;#10;\t\t}&amp;#10;\t\tthis.attackAnim = (float) this.swingTime / (float) i;&amp;#10;\t}&amp;#10;&amp;#10;\tpublic boolean isAlliedTo(Entity p_33314_) {&amp;#10;\t\tif (super.isAlliedTo(p_33314_)) {&amp;#10;\t\t\treturn true;&amp;#10;\t\t} else if (p_33314_ instanceof LivingEntity &amp;&amp; ((LivingEntity) p_33314_).getMobType() == MobType.ILLAGER) {&amp;#10;\t\t\treturn this.getTeam() == null &amp;&amp; p_33314_.getTeam() == null;&amp;#10;\t\t} else {&amp;#10;\t\t\treturn false;&amp;#10;\t\t}&amp;#10;\t}&amp;#10;&amp;#10;\t{</field></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>",
+    "breedable": false,
+    "tameable": false,
+    "breedTriggerItems": [],
+    "ranged": false,
+    "rangedAttackItem": {
+      "value": ""
+    },
+    "rangedItemType": "Default item",
+    "rangedAttackInterval": 20,
+    "rangedAttackRadius": 10.0,
+    "spawnThisMob": false,
+    "doesDespawnWhenIdle": true,
+    "spawningProbability": 20,
+    "mobSpawningType": "monster",
+    "minNumberOfMobsPerGroup": 4,
+    "maxNumberOfMobsPerGroup": 4,
+    "restrictionBiomes": [],
+    "spawnInDungeons": false,
+    "raidSpawnsCount": [
+      4,
+      3,
+      3,
+      4,
+      4,
+      4,
+      2
+    ],
+    "sensitiveToVibration": false,
+    "vibrationalEvents": [],
+    "vibrationSensitivityRadius": {
+      "fixedValue": 7.0
+    }
+  }
+}

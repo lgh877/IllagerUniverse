@@ -1,0 +1,23 @@
+{
+  "_fv": 85,
+  "_type": "projectile",
+  "definition": {
+    "projectileItem": {
+      "value": "CUSTOM:IronFork"
+    },
+    "showParticles": false,
+    "actionSound": {
+      "value": "entity.arrow.shoot"
+    },
+    "igniteFire": false,
+    "disableGravity": false,
+    "disableDiscarding": true,
+    "power": 1.0,
+    "damage": 3.0,
+    "knockback": 0,
+    "entityModel": "ModelIllagerBandit",
+    "customModelTexture": "bandit.png",
+    "modelWidth": 0.5,
+    "modelHeight": 0.5
+  }
+}

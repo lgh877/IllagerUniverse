@@ -1,0 +1,482 @@
+{
+  "mod_elements": [
+    {
+      "name": "IActionStateMob",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "i_action_state_mob",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/IActionStateMob.java"
+        ]
+      },
+      "path": "~/interfaces"
+    },
+    {
+      "name": "DoNothingGoal",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "do_nothing_goal",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/DoNothingGoal.java"
+        ]
+      },
+      "path": "~/goals"
+    },
+    {
+      "name": "VectorHelper",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "vector_helper",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/VectorHelper.java"
+        ]
+      },
+      "path": "~/utils"
+    },
+    {
+      "name": "IllagerUniverseTab",
+      "type": "tab",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "illager_universe_tab",
+      "metadata": {
+        "files": []
+      },
+      "path": "~/tabs"
+    },
+    {
+      "name": "IronCutlass",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "iron_cutlass",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/item/IronCutlassItem.java",
+          "src/main/resources/assets/illager_universe/models/item/iron_cutlass.json"
+        ]
+      },
+      "path": "~/items/weapons/IronCutlass"
+    },
+    {
+      "name": "IllagerUniverseWeaponsTab",
+      "type": "tab",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "illager_universe_weapons_tab",
+      "metadata": {
+        "files": []
+      },
+      "path": "~/tabs"
+    },
+    {
+      "name": "Bandit",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "bandit",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/entity/BanditEntity.java",
+          "src/main/java/net/sweegy/illageruniverse/client/renderer/BanditRenderer.java",
+          "src/main/resources/assets/illager_universe/models/item/bandit_spawn_egg.json"
+        ]
+      },
+      "path": "~/mobs/bandit"
+    },
+    {
+      "name": "IllagerUniverseAnimations",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "illager_universe_animations",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/IllagerUniverseAnimations.java"
+        ]
+      },
+      "path": "~/registryLikeThings"
+    },
+    {
+      "name": "BanditOnEntityTickUpdate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bandit_on_entity_tick_update",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/procedures/BanditOnEntityTickUpdateProcedure.java"
+        ]
+      },
+      "path": "~/mobs/bandit"
+    },
+    {
+      "name": "AnimUtil",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "anim_util",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/AnimUtil.java"
+        ]
+      },
+      "path": "~/utils"
+    },
+    {
+      "name": "ActionStateMobMeleeAttackGoal",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "action_state_mob_melee_attack_goal",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/ActionStateMobMeleeAttackGoal.java"
+        ]
+      },
+      "path": "~/goals"
+    },
+    {
+      "name": "HierachicalHeadLayer",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "hierachical_head_layer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/HierachicalHeadLayer.java"
+        ]
+      },
+      "path": "~/layer"
+    },
+    {
+      "name": "IHierachicalHeadedModel",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "i_hierachical_headed_model",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/IHierachicalHeadedModel.java"
+        ]
+      },
+      "path": "~/interfaces"
+    },
+    {
+      "name": "ArmorWearingModel",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "armor_wearing_model",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/ArmorWearingModel.java"
+        ]
+      },
+      "path": "~/interfaces"
+    },
+    {
+      "name": "CustomArmorLayer",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "custom_armor_layer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/CustomArmorLayer.java"
+        ]
+      },
+      "path": "~/layer"
+    },
+    {
+      "name": "IronFork",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "iron_fork",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/illager_universe/models/item/iron_fork.json",
+          "src/main/java/net/sweegy/illageruniverse/item/IronForkItem.java"
+        ]
+      },
+      "path": "~/items/weapons/fork"
+    },
+    {
+      "name": "IronForkProjectile",
+      "type": "projectile",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "iron_fork_projectile",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/entity/IronForkProjectileEntity.java",
+          "src/main/java/net/sweegy/illageruniverse/client/renderer/IronForkProjectileRenderer.java"
+        ]
+      },
+      "path": "~/items/weapons/fork"
+    },
+    {
+      "name": "IronForkSmeltingRecipe",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "iron_fork_smelting_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/illager_universe/advancements/recipes/iron_fork_smelting_recipe.json",
+          "src/main/resources/data/illager_universe/recipes/iron_fork_smelting_recipe.json"
+        ]
+      },
+      "path": "~/items/weapons/fork"
+    },
+    {
+      "name": "Quivager",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "quivager",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/illager_universe/models/item/quivager_spawn_egg.json",
+          "src/main/java/net/sweegy/illageruniverse/client/renderer/QuivagerRenderer.java",
+          "src/main/java/net/sweegy/illageruniverse/entity/QuivagerEntity.java"
+        ]
+      },
+      "path": "~/mobs/quivager"
+    },
+    {
+      "name": "DistToMobFlatSquare",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dist_to_mob_flat_square",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          }
+        ],
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/procedures/DistToMobFlatSquareProcedure.java"
+        ]
+      },
+      "path": "~/utils"
+    },
+    {
+      "name": "QuivagerOnEntityTickUpdate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "quivager_on_entity_tick_update",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/procedures/QuivagerOnEntityTickUpdateProcedure.java"
+        ]
+      },
+      "path": "~/mobs/quivager"
+    },
+    {
+      "name": "ActionStateMobMeleeAttackSprintGoal",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "action_state_mob_melee_attack_sprint_goal",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/ActionStateMobMeleeAttackSprintGoal.java"
+        ]
+      },
+      "path": "~/goals"
+    },
+    {
+      "name": "DirectionalItemRenderer",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "directional_item_renderer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/DirectionalItemRenderer.java"
+        ]
+      },
+      "path": "~/renderer"
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [],
+  "tag_elements": {
+    "ITEMS:minecraft:swords": [
+      "~CUSTOM:IronCutlass"
+    ],
+    "ENTITIES:minecraft:raiders": [
+      "~CUSTOM:Quivager",
+      "~CUSTOM:Bandit"
+    ]
+  },
+  "tab_element_order": {},
+  "language_map": {
+    "en_us": {
+      "item_group.illager_universe.illager_universe_tab": "Illager Universe Mobs Tab",
+      "item.illager_universe.iron_cutlass": "Iron Cutlass",
+      "item_group.illager_universe.illager_universe_weapons_tab": "Illager Universe Weapons Tab",
+      "entity.illager_universe.bandit": "Bandit",
+      "item.illager_universe.bandit_spawn_egg": "Bandit Spawn Egg",
+      "item.illager_universe.iron_fork": "Iron Fork",
+      "item.illager_universe.quivager_spawn_egg": "Quivager Spawn Egg",
+      "entity.illager_universe.quivager": "Quivager"
+    }
+  },
+  "metadata": {
+    "files": [
+      "src/main/java/net/sweegy/illageruniverse/init/IllagerUniverseModItems.java",
+      "src/main/java/net/sweegy/illageruniverse/init/IllagerUniverseModEntities.java",
+      "src/main/java/net/sweegy/illageruniverse/init/IllagerUniverseModEntityRenderers.java",
+      "src/main/resources/META-INF/mods.toml",
+      "src/main/java/net/sweegy/illageruniverse/init/IllagerUniverseModModels.java",
+      "src/main/java/net/sweegy/illageruniverse/IllagerUniverseMod.java",
+      "src/main/resources/pack.mcmeta",
+      "src/main/java/net/sweegy/illageruniverse/init/IllagerUniverseModTabs.java"
+    ]
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": [
+      {
+        "name": "mobs",
+        "children": [
+          {
+            "name": "bandit",
+            "children": []
+          },
+          {
+            "name": "quivager",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "utils",
+        "children": []
+      },
+      {
+        "name": "interfaces",
+        "children": []
+      },
+      {
+        "name": "goals",
+        "children": []
+      },
+      {
+        "name": "tabs",
+        "children": []
+      },
+      {
+        "name": "items",
+        "children": [
+          {
+            "name": "weapons",
+            "children": [
+              {
+                "name": "fork",
+                "children": []
+              },
+              {
+                "name": "IronCutlass",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "registryLikeThings",
+        "children": []
+      },
+      {
+        "name": "layer",
+        "children": []
+      },
+      {
+        "name": "renderer",
+        "children": []
+      }
+    ]
+  },
+  "workspaceSettings": {
+    "modid": "illager_universe",
+    "modName": "Illager Universe",
+    "version": "1.0.0",
+    "author": "MCreator",
+    "websiteURL": "https://mcreator.net",
+    "license": "Not specified",
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "forge-1.20.1",
+    "modElementsPackage": "net.sweegy.illageruniverse"
+  },
+  "mcreatorVersion": 202600114619
+}

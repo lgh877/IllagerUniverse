@@ -1,0 +1,11 @@
+{
+  "_fv": 85,
+  "_type": "tab",
+  "definition": {
+    "name": "Illager Universe Weapons Tab",
+    "icon": {
+      "value": "CUSTOM:IronCutlass"
+    },
+    "showSearch": false
+  }
+}
