@@ -3,8 +3,10 @@
  */
 package net.sweegy.illageruniverse.init;
 
+import net.sweegy.illageruniverse.entity.ShadowGoatEntity;
 import net.sweegy.illageruniverse.entity.QuivagerEntity;
 import net.sweegy.illageruniverse.entity.IronForkProjectileEntity;
+import net.sweegy.illageruniverse.entity.BombagerEntity;
 import net.sweegy.illageruniverse.entity.BanditEntity;
 import net.sweegy.illageruniverse.IllagerUniverseMod;
 
@@ -33,6 +35,14 @@ public class IllagerUniverseModEntities {
 			EntityType.Builder.<QuivagerEntity>of(QuivagerEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(QuivagerEntity::new)
 
 					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<BombagerEntity>> BOMBAGER = register("bombager",
+			EntityType.Builder.<BombagerEntity>of(BombagerEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(BombagerEntity::new)
+
+					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<ShadowGoatEntity>> SHADOW_GOAT = register("shadow_goat",
+			EntityType.Builder.<ShadowGoatEntity>of(ShadowGoatEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(ShadowGoatEntity::new)
+
+					.sized(0.9f, 1.3f));
 
 	// Start of user code block custom entities
 	// End of user code block custom entities
@@ -45,6 +55,8 @@ public class IllagerUniverseModEntities {
 		event.enqueueWork(() -> {
 			BanditEntity.init();
 			QuivagerEntity.init();
+			BombagerEntity.init();
+			ShadowGoatEntity.init();
 		});
 	}
 
@@ -52,5 +64,7 @@ public class IllagerUniverseModEntities {
 	public static void registerAttributes(EntityAttributeCreationEvent event) {
 		event.put(BANDIT.get(), BanditEntity.createAttributes().build());
 		event.put(QUIVAGER.get(), QuivagerEntity.createAttributes().build());
+		event.put(BOMBAGER.get(), BombagerEntity.createAttributes().build());
+		event.put(SHADOW_GOAT.get(), ShadowGoatEntity.createAttributes().build());
 	}
 }

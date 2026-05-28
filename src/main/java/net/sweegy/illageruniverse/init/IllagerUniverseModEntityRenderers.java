@@ -3,8 +3,10 @@
  */
 package net.sweegy.illageruniverse.init;
 
+import net.sweegy.illageruniverse.client.renderer.ShadowGoatRenderer;
 import net.sweegy.illageruniverse.client.renderer.QuivagerRenderer;
 import net.sweegy.illageruniverse.client.renderer.IronForkProjectileRenderer;
+import net.sweegy.illageruniverse.client.renderer.BombagerRenderer;
 import net.sweegy.illageruniverse.client.renderer.BanditRenderer;
 
 import net.minecraftforge.fml.common.Mod;
@@ -19,5 +21,7 @@ public class IllagerUniverseModEntityRenderers {
 		event.registerEntityRenderer(IllagerUniverseModEntities.BANDIT.get(), BanditRenderer::new);
 		event.registerEntityRenderer(IllagerUniverseModEntities.IRON_FORK_PROJECTILE.get(), IronForkProjectileRenderer::new);
 		event.registerEntityRenderer(IllagerUniverseModEntities.QUIVAGER.get(), QuivagerRenderer::new);
+		event.registerEntityRenderer(IllagerUniverseModEntities.BOMBAGER.get(), BombagerRenderer::new);
+		event.registerEntityRenderer(IllagerUniverseModEntities.SHADOW_GOAT.get(), ShadowGoatRenderer::new);
 	}
 }

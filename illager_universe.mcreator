@@ -65,17 +65,6 @@
       "path": "~/items/weapons/IronCutlass"
     },
     {
-      "name": "IllagerUniverseWeaponsTab",
-      "type": "tab",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "illager_universe_weapons_tab",
-      "metadata": {
-        "files": []
-      },
-      "path": "~/tabs"
-    },
-    {
       "name": "Bandit",
       "type": "livingentity",
       "compiles": true,
@@ -217,20 +206,6 @@
       "path": "~/layer"
     },
     {
-      "name": "IronFork",
-      "type": "item",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "iron_fork",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/illager_universe/models/item/iron_fork.json",
-          "src/main/java/net/sweegy/illageruniverse/item/IronForkItem.java"
-        ]
-      },
-      "path": "~/items/weapons/fork"
-    },
-    {
       "name": "IronForkProjectile",
       "type": "projectile",
       "compiles": true,
@@ -252,7 +227,6 @@
       "registry_name": "iron_fork_smelting_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/illager_universe/advancements/recipes/iron_fork_smelting_recipe.json",
           "src/main/resources/data/illager_universe/recipes/iron_fork_smelting_recipe.json"
         ]
       },
@@ -361,6 +335,113 @@
         ]
       },
       "path": "~/renderer"
+    },
+    {
+      "name": "FadingOutAnimation",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "fading_out_animation",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/FadingOutAnimation.java"
+        ]
+      }
+    },
+    {
+      "name": "Bombager",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bombager",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/illager_universe/models/item/bombager_spawn_egg.json",
+          "src/main/java/net/sweegy/illageruniverse/client/renderer/BombagerRenderer.java",
+          "src/main/java/net/sweegy/illageruniverse/entity/BombagerEntity.java"
+        ]
+      },
+      "path": "~/mobs/bombager"
+    },
+    {
+      "name": "MobAnimatorRegistry",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "mob_animator_registry",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/MobAnimatorRegistry.java"
+        ]
+      },
+      "path": "~/registryLikeThings"
+    },
+    {
+      "name": "ChefArmorSet",
+      "type": "armor",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chef_armor_set",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/item/ChefArmorSetItem.java",
+          "src/main/resources/assets/illager_universe/models/item/chef_armor_set_chestplate.json",
+          "src/main/resources/assets/illager_universe/models/item/chef_armor_set_helmet.json"
+        ]
+      },
+      "path": "~/items/armors/chefArmorSet"
+    },
+    {
+      "name": "Fork",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fork",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/illager_universe/models/item/fork.json",
+          "src/main/java/net/sweegy/illageruniverse/item/ForkItem.java"
+        ]
+      },
+      "path": "~/items/weapons/fork"
+    },
+    {
+      "name": "ShadowGoat",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "shadow_goat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/entity/ShadowGoatEntity.java",
+          "src/main/resources/assets/illager_universe/models/item/shadow_goat_spawn_egg.json",
+          "src/main/java/net/sweegy/illageruniverse/client/renderer/ShadowGoatRenderer.java"
+        ]
+      },
+      "path": "~/mobs/shadowGoat"
+    },
+    {
+      "name": "ShadowGoatOnEntityTickUpdate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shadow_goat_on_entity_tick_update",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/procedures/ShadowGoatOnEntityTickUpdateProcedure.java"
+        ]
+      },
+      "path": "~/mobs/shadowGoat"
     }
   ],
   "variable_elements": [],
@@ -370,6 +451,8 @@
       "~CUSTOM:IronCutlass"
     ],
     "ENTITIES:minecraft:raiders": [
+      "~CUSTOM:ShadowGoat",
+      "~CUSTOM:Bombager",
       "~CUSTOM:Quivager",
       "~CUSTOM:Bandit"
     ]
@@ -379,12 +462,17 @@
     "en_us": {
       "item_group.illager_universe.illager_universe_tab": "Illager Universe Mobs Tab",
       "item.illager_universe.iron_cutlass": "Iron Cutlass",
-      "item_group.illager_universe.illager_universe_weapons_tab": "Illager Universe Weapons Tab",
-      "entity.illager_universe.bandit": "Bandit",
-      "item.illager_universe.bandit_spawn_egg": "Bandit Spawn Egg",
-      "item.illager_universe.iron_fork": "Iron Fork",
+      "entity.illager_universe.bandit": "Lootthief",
+      "item.illager_universe.bandit_spawn_egg": "Lootthief Spawn Egg",
       "item.illager_universe.quivager_spawn_egg": "Quivager Spawn Egg",
-      "entity.illager_universe.quivager": "Quivager"
+      "entity.illager_universe.quivager": "Quivager",
+      "entity.illager_universe.bombager": "Bombager",
+      "item.illager_universe.bombager_spawn_egg": "Bombager Spawn Egg",
+      "item.illager_universe.chef_armor_set_helmet": "Toque",
+      "item.illager_universe.chef_armor_set_chestplate": "Apron",
+      "item.illager_universe.fork": "Fork",
+      "entity.illager_universe.shadow_goat": "Shadow Goat",
+      "item.illager_universe.shadow_goat_spawn_egg": "Shadow Goat Spawn Egg"
     }
   },
   "metadata": {
@@ -411,6 +499,14 @@
           },
           {
             "name": "quivager",
+            "children": []
+          },
+          {
+            "name": "bombager",
+            "children": []
+          },
+          {
+            "name": "shadowGoat",
             "children": []
           }
         ]
@@ -443,6 +539,15 @@
               },
               {
                 "name": "IronCutlass",
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "armors",
+            "children": [
+              {
+                "name": "chefArmorSet",
                 "children": []
               }
             ]

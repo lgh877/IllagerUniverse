@@ -45,7 +45,7 @@
       "value": -1,
       "falpha": 0.0
     },
-    "spawnEggTexture": "",
+    "spawnEggTexture": "quivager_spawn_egg",
     "creativeTabs": [
       {
         "value": "CUSTOM:IllagerUniverseTab"
@@ -55,16 +55,16 @@
     "bossBarColor": "PINK",
     "bossBarType": "PROGRESS",
     "equipmentMainHand": {
-      "value": ""
+      "value": "CUSTOM:Fork"
     },
     "equipmentOffHand": {
       "value": ""
     },
     "equipmentHelmet": {
-      "value": ""
+      "value": "CUSTOM:ChefArmorSet.helmet"
     },
     "equipmentBody": {
-      "value": ""
+      "value": "CUSTOM:ChefArmorSet.body"
     },
     "equipmentLeggings": {
       "value": ""
@@ -73,17 +73,17 @@
       "value": ""
     },
     "mobBehaviourType": "Raider",
-    "mobCreatureType": "UNDEFINED",
-    "attackStrength": 3,
+    "mobCreatureType": "ILLAGER",
+    "attackStrength": 1,
     "attackKnockback": 0.0,
     "knockbackResistance": 0.0,
     "movementSpeed": 0.3,
     "stepHeight": 0.6,
     "armorBaseValue": 0.0,
     "trackingRange": 64,
-    "followRange": 16,
-    "health": 10,
-    "xpAmount": 0,
+    "followRange": 64,
+    "health": 24,
+    "xpAmount": 5,
     "waterMob": false,
     "breatheUnderwater": {
       "fixedValue": false
@@ -143,7 +143,7 @@
     },
     "hasAI": true,
     "aiBase": "(none)",
-    "aixml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"aitasks_container\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"java_code\"><field name=\"CODE\">goalSelector.addGoal(0, new DoNothingGoal(this));&amp;#10;goalSelector.addGoal(1, new ActionStateMobMeleeAttackGoal(this, 1.2, false));</field><next><block type=\"wander\"><field name=\"speed\">1</field><field name=\"condition\">null,null</field><next><block type=\"attack_action\"><field name=\"callhelp\">FALSE</field><field name=\"condition\">null,null</field><next><block type=\"look_around\"><field name=\"condition\">null,null</field><next><block type=\"swim_in_water\"><field name=\"condition\">null,null</field><next><block type=\"java_code\"><field name=\"CODE\">\t\tthis.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true, false));&amp;#10;\t\tthis.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, AbstractVillager.class, true, false));&amp;#10;\t\tthis.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, AbstractGolem.class, true, false));&amp;#10;}&amp;#10;&amp;#10;\tpublic int actionTicks, &amp;#10;animTicks, animTicksO;&amp;#10;\tpublic LivingEntity lockedTarget;&amp;#10;&amp;#10;\tpublic int getActionState() {&amp;#10;\t\treturn entityData.get(DATA_actionState);&amp;#10;\t}&amp;#10;&amp;#10;\tpublic void setActionState(int input) {&amp;#10;\t\tentityData.set(DATA_actionState, input);&amp;#10;\t}&amp;#10;&amp;#10;\tpublic boolean shouldNotMove() {&amp;#10;\t\treturn entityData.get(DATA_actionState) &gt; 1;&amp;#10;\t}&amp;#10;&amp;#10;\tprotected void updateSwingTime() {&amp;#10;\t\tint i = 11;&amp;#10;\t\tif (this.swinging) {&amp;#10;\t\t\t++this.swingTime;&amp;#10;\t\t\tif (this.swingTime &gt; i) {&amp;#10;\t\t\t\tthis.swingTime = 0;&amp;#10;\t\t\t\tthis.swinging = false;&amp;#10;\t\t\t}&amp;#10;\t\t} else {&amp;#10;\t\t\tthis.swingTime = 0;&amp;#10;\t\t}&amp;#10;\t\tthis.attackAnim = (float) this.swingTime / (float) i;&amp;#10;\t}&amp;#10;&amp;#10;\tpublic boolean isAlliedTo(Entity p_33314_) {&amp;#10;\t\tif (super.isAlliedTo(p_33314_)) {&amp;#10;\t\t\treturn true;&amp;#10;\t\t} else if (p_33314_ instanceof LivingEntity &amp;&amp; ((LivingEntity) p_33314_).getMobType() == MobType.ILLAGER) {&amp;#10;\t\t\treturn this.getTeam() == null &amp;&amp; p_33314_.getTeam() == null;&amp;#10;\t\t} else {&amp;#10;\t\t\treturn false;&amp;#10;\t\t}&amp;#10;\t}&amp;#10;&amp;#10;\t{</field></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>",
+    "aixml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"aitasks_container\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"java_code\"><field name=\"CODE\">goalSelector.addGoal(0, new DoNothingGoal(this));&amp;#10;goalSelector.addGoal(1, new ActionStateMobMeleeAttackSprintGoal(this, 1.2, false));</field><next><block type=\"wander\"><field name=\"speed\">1</field><field name=\"condition\">null,null</field><next><block type=\"attack_action\"><field name=\"callhelp\">FALSE</field><field name=\"condition\">null,null</field><next><block type=\"look_around\"><field name=\"condition\">null,null</field><next><block type=\"swim_in_water\"><field name=\"condition\">null,null</field><next><block type=\"java_code\"><field name=\"CODE\">\t\tthis.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true, false));&amp;#10;\t\tthis.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, AbstractVillager.class, true, false));&amp;#10;\t\tthis.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, AbstractGolem.class, true, false));&amp;#10;}&amp;#10;\tpublic AnimationDefinition currentAnimation;&amp;#10;\tpublic int actionTicks, animTicks, animTicksO, walkTransitionAmplitude, walkTransitionAmplitudeO;&amp;#10;\tpublic LivingEntity lockedTarget;&amp;#10;&amp;#10;\tpublic int getActionState() {&amp;#10;\t\treturn entityData.get(DATA_actionState);&amp;#10;\t}&amp;#10;&amp;#10;\tpublic void setActionState(int input) {&amp;#10;\t\tentityData.set(DATA_actionState, input);&amp;#10;\t}&amp;#10;&amp;#10;\tpublic boolean shouldNotMove() {&amp;#10;\t\treturn entityData.get(DATA_actionState) &gt; 1;&amp;#10;\t}&amp;#10;&amp;#10;\tpublic boolean isAlliedTo(Entity p_33314_) {&amp;#10;\t\tif (super.isAlliedTo(p_33314_)) {&amp;#10;\t\t\treturn true;&amp;#10;\t\t} else if (p_33314_ instanceof LivingEntity &amp;&amp; ((LivingEntity) p_33314_).getMobType() == MobType.ILLAGER) {&amp;#10;\t\t\treturn this.getTeam() == null &amp;&amp; p_33314_.getTeam() == null;&amp;#10;\t\t} else {&amp;#10;\t\t\treturn false;&amp;#10;\t\t}&amp;#10;\t}&amp;#10;&amp;#10;\tpublic void onSyncedDataUpdated(EntityDataAccessor&lt;?&gt; p_21104_) {&amp;#10;\t\tsuper.onSyncedDataUpdated(p_21104_);&amp;#10;\t\tif (level().isClientSide()) {&amp;#10;\t\t\tif (p_21104_.equals(DATA_actionState)) {&amp;#10;\t\t\t\tanimTicks = animTicksO = 0;&amp;#10;\t\t\t\tswitch (entityData.get(DATA_actionState)) {&amp;#10;\t\t\t\t\tcase 1 -&gt; currentAnimation = quivagerAnimation.stab;&amp;#10;\t\t\t\t\tcase 2 -&gt; currentAnimation = quivagerAnimation.throwAttack;&amp;#10;\t\t\t\t\tcase 3 -&gt; currentAnimation = quivagerAnimation.eat;&amp;#10;\t\t\t\t}&amp;#10;\t\t\t}&amp;#10;\t\t}&amp;#10;\t}&amp;#10;&amp;#10;\t{&amp;#10;</field></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>",
     "breedable": false,
     "tameable": false,
     "breedTriggerItems": [],
@@ -163,12 +163,12 @@
     "restrictionBiomes": [],
     "spawnInDungeons": false,
     "raidSpawnsCount": [
-      4,
-      3,
-      3,
-      4,
-      4,
-      4,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
       2
     ],
     "sensitiveToVibration": false,

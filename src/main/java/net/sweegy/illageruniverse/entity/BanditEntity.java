@@ -3,7 +3,6 @@ package net.sweegy.illageruniverse.entity;
 import net.sweegy.illageruniverse.procedures.BanditOnEntityTickUpdateProcedure;
 import net.sweegy.illageruniverse.init.IllagerUniverseModItems;
 import net.sweegy.illageruniverse.init.IllagerUniverseModEntities;
-import net.sweegy.illageruniverse.client.model.animations.IllagerBanditAnimation;
 import net.sweegy.illageruniverse.IActionStateMob;
 import net.sweegy.illageruniverse.DoNothingGoal;
 import net.sweegy.illageruniverse.ActionStateMobMeleeAttackSprintGoal;
@@ -37,10 +36,10 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.client.animation.AnimationDefinition;
 
 public class BanditEntity extends AbstractIllager implements IActionStateMob {
 	public static final EntityDataAccessor<Integer> DATA_actionState = SynchedEntityData.defineId(BanditEntity.class, EntityDataSerializers.INT);
+	public static final EntityDataAccessor<Integer> DATA_modelPartsToHide = SynchedEntityData.defineId(BanditEntity.class, EntityDataSerializers.INT);
 	public final AnimationState animationState0 = new AnimationState();
 
 	public BanditEntity(PlayMessages.SpawnEntity packet, Level world) {
@@ -50,7 +49,7 @@ public class BanditEntity extends AbstractIllager implements IActionStateMob {
 	public BanditEntity(EntityType<BanditEntity> type, Level world) {
 		super(type, world);
 		setMaxUpStep(0.6f);
-		xpReward = 0;
+		xpReward = 5;
 		setNoAi(false);
 		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(IllagerUniverseModItems.IRON_CUTLASS.get()));
 		this.setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(IllagerUniverseModItems.IRON_CUTLASS.get()));
@@ -82,8 +81,7 @@ public class BanditEntity extends AbstractIllager implements IActionStateMob {
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 	}
 
-	public AnimationDefinition currentAnimation;
-	public static final EntityDataAccessor<Integer> DATA_modelPartsToHide = SynchedEntityData.defineId(BanditEntity.class, EntityDataSerializers.INT);
+	public int actionTicks, animTicks, animTicksO, walkTransitionAmplitude, walkTransitionAmplitudeO;
 
 	@Override
 	public void setItemSlot(EquipmentSlot slot, ItemStack itemStack) {
@@ -108,8 +106,6 @@ public class BanditEntity extends AbstractIllager implements IActionStateMob {
 	public boolean getModelPartToHide(int p_20292_) {
 		return (this.entityData.get(DATA_modelPartsToHide) & 1 << p_20292_) != 0;
 	}
-
-	public int actionTicks, animTicks, animTicksO, walkTransitionAmplitude, walkTransitionAmplitudeO;
 
 	public int getActionState() {
 		return entityData.get(DATA_actionState);
@@ -138,31 +134,11 @@ public class BanditEntity extends AbstractIllager implements IActionStateMob {
 		if (level().isClientSide()) {
 			if (p_21104_.equals(DATA_actionState)) {
 				animTicks = animTicksO = 0;
-				switch (entityData.get(DATA_actionState)) {
-					case 1 -> currentAnimation = IllagerBanditAnimation.attack;
-					case 2 -> currentAnimation = IllagerBanditAnimation.lunge;
-				}
 			}
 		}
 	}
 
-	/* codes storage
-					float partialTicks = ageInTicks - entity.tickCount;
-					float walkTransitionAmplitude = Mth.lerp(partialTicks, entity.walkTransitionAmplitudeO, entity.walkTransitionAmplitude) / 3F;
-					this.animate(entity.animationState0, IllagerBanditAnimation.idle, ageInTicks, 1f);
-					this.animateWalk(IllagerBanditAnimation.walk, limbSwing, limbSwingAmount * walkTransitionAmplitude, 1f, 2f);
-					this.animateWalk(IllagerBanditAnimation.aggro, limbSwing, limbSwingAmount * (1 - walkTransitionAmplitude), 1f, 2f);
-					if (entity.getActionState() != 0) {
-						float animTicks = Mth.lerp(partialTicks, entity.animTicksO, entity.animTicks);
-						this.animateWalk(IllagerUniverseAnimations.BanditAnimations[entity.getActionState() - 1], animTicks, 1f, 1f, 1f);
-					}
-	*/
 	{
-	}
-
-	@Override
-	public MobType getMobType() {
-		return MobType.ILLAGER;
 	}
 
 	@Override
@@ -189,6 +165,7 @@ public class BanditEntity extends AbstractIllager implements IActionStateMob {
 	public void addAdditionalSaveData(CompoundTag compound) {
 		super.addAdditionalSaveData(compound);
 		compound.putInt("DataactionState", this.entityData.get(DATA_actionState));
+		compound.putInt("DatamodelPartsToHide", this.entityData.get(DATA_modelPartsToHide));
 	}
 
 	@Override
@@ -196,6 +173,8 @@ public class BanditEntity extends AbstractIllager implements IActionStateMob {
 		super.readAdditionalSaveData(compound);
 		if (compound.contains("DataactionState"))
 			this.entityData.set(DATA_actionState, compound.getInt("DataactionState"));
+		if (compound.contains("DatamodelPartsToHide"))
+			this.entityData.set(DATA_modelPartsToHide, compound.getInt("DatamodelPartsToHide"));
 	}
 
 	@Override

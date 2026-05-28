@@ -9,14 +9,14 @@
     "customProperties": {},
     "states": [],
     "animations": [],
-    "name": "Iron Fork",
+    "name": "Fork",
     "rarity": "COMMON",
     "creativeTabs": [
       {
-        "value": "CUSTOM:IllagerUniverseWeaponsTab"
+        "value": "CUSTOM:IllagerUniverseTab"
       }
     ],
-    "stackSize": 64,
+    "stackSize": 16,
     "enchantability": 0,
     "useDuration": 40,
     "toolType": 1.0,

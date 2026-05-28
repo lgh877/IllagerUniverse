@@ -78,7 +78,7 @@ public class QuivagerOnEntityTickUpdateProcedure {
 						}
 						if (mob.actionTicks == 1) {
 							if (entity instanceof LivingEntity _entity) {
-								ItemStack _setstack12 = new ItemStack(IllagerUniverseModItems.IRON_FORK.get()).copy();
+								ItemStack _setstack12 = new ItemStack(IllagerUniverseModItems.FORK.get()).copy();
 								_setstack12.setCount(1);
 								_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack12);
 								if (_entity instanceof Player _player)
@@ -121,7 +121,7 @@ public class QuivagerOnEntityTickUpdateProcedure {
 							}
 						} else if (mob.actionTicks == 27) {
 							if (entity instanceof LivingEntity _entity) {
-								ItemStack _setstack19 = new ItemStack(IllagerUniverseModItems.IRON_FORK.get()).copy();
+								ItemStack _setstack19 = new ItemStack(IllagerUniverseModItems.FORK.get()).copy();
 								_setstack19.setCount(1);
 								_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack19);
 								if (_entity instanceof Player _player)
@@ -194,7 +194,7 @@ public class QuivagerOnEntityTickUpdateProcedure {
 								}
 							}
 							if (entity instanceof LivingEntity _entity) {
-								ItemStack _setstack36 = new ItemStack(IllagerUniverseModItems.IRON_FORK.get()).copy();
+								ItemStack _setstack36 = new ItemStack(IllagerUniverseModItems.FORK.get()).copy();
 								_setstack36.setCount(1);
 								_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack36);
 								if (_entity instanceof Player _player)

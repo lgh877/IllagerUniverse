@@ -16,7 +16,7 @@
     },
     "creativeTabs": [
       {
-        "value": "CUSTOM:IllagerUniverseWeaponsTab"
+        "value": "CUSTOM:IllagerUniverseTab"
       }
     ],
     "efficiency": 4.0,
@@ -27,7 +27,11 @@
     "glowCondition": {
       "fixedValue": false
     },
-    "repairItems": [],
+    "repairItems": [
+      {
+        "value": "Items.IRON_INGOT"
+      }
+    ],
     "immuneToFire": false,
     "blockDropsTier": "WOOD",
     "blocksAffected": [],

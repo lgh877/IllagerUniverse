@@ -1,10 +1,15 @@
 {
   "item_group.illager_universe.illager_universe_tab": "Illager Universe Mobs Tab",
   "item.illager_universe.iron_cutlass": "Iron Cutlass",
-  "item_group.illager_universe.illager_universe_weapons_tab": "Illager Universe Weapons Tab",
-  "entity.illager_universe.bandit": "Bandit",
-  "item.illager_universe.bandit_spawn_egg": "Bandit Spawn Egg",
-  "item.illager_universe.iron_fork": "Iron Fork",
+  "entity.illager_universe.bandit": "Lootthief",
+  "item.illager_universe.bandit_spawn_egg": "Lootthief Spawn Egg",
   "item.illager_universe.quivager_spawn_egg": "Quivager Spawn Egg",
-  "entity.illager_universe.quivager": "Quivager"
+  "entity.illager_universe.quivager": "Quivager",
+  "entity.illager_universe.bombager": "Bombager",
+  "item.illager_universe.bombager_spawn_egg": "Bombager Spawn Egg",
+  "item.illager_universe.chef_armor_set_helmet": "Toque",
+  "item.illager_universe.chef_armor_set_chestplate": "Apron",
+  "item.illager_universe.fork": "Fork",
+  "entity.illager_universe.shadow_goat": "Shadow Goat",
+  "item.illager_universe.shadow_goat_spawn_egg": "Shadow Goat Spawn Egg"
 }

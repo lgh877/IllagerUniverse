@@ -22,9 +22,9 @@ import net.minecraft.server.level.ServerPlayer;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.ImmutableMultimap;
 
-public class IronForkItem extends Item {
-	public IronForkItem() {
-		super(new Item.Properties());
+public class ForkItem extends Item {
+	public ForkItem() {
+		super(new Item.Properties().stacksTo(16));
 	}
 
 	@Override

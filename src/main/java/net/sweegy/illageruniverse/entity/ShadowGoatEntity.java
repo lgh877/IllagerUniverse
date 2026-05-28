@@ -1,9 +1,9 @@
 package net.sweegy.illageruniverse.entity;
 
-import net.sweegy.illageruniverse.procedures.QuivagerOnEntityTickUpdateProcedure;
-import net.sweegy.illageruniverse.init.IllagerUniverseModItems;
+import net.sweegy.illageruniverse.procedures.ShadowGoatOnEntityTickUpdateProcedure;
 import net.sweegy.illageruniverse.init.IllagerUniverseModEntities;
 import net.sweegy.illageruniverse.IActionStateMob;
+import net.sweegy.illageruniverse.FadingOutAnimation;
 import net.sweegy.illageruniverse.DoNothingGoal;
 import net.sweegy.illageruniverse.ActionStateMobMeleeAttackSprintGoal;
 
@@ -11,13 +11,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;
 
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.entity.raid.Raid;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.npc.AbstractVillager;
-import net.minecraft.world.entity.monster.AbstractIllager;
-import net.minecraft.world.entity.animal.AbstractGolem;
+import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
@@ -25,7 +25,12 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.resources.ResourceLocation;
@@ -35,22 +40,22 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.BlockPos;
 
-public class QuivagerEntity extends AbstractIllager implements IActionStateMob {
-	public static final EntityDataAccessor<Integer> DATA_actionState = SynchedEntityData.defineId(QuivagerEntity.class, EntityDataSerializers.INT);
+import java.util.ArrayList;
 
-	public QuivagerEntity(PlayMessages.SpawnEntity packet, Level world) {
-		this(IllagerUniverseModEntities.QUIVAGER.get(), world);
+public class ShadowGoatEntity extends Raider implements IActionStateMob {
+	public static final EntityDataAccessor<Integer> DATA_actionState = SynchedEntityData.defineId(ShadowGoatEntity.class, EntityDataSerializers.INT);
+
+	public ShadowGoatEntity(PlayMessages.SpawnEntity packet, Level world) {
+		this(IllagerUniverseModEntities.SHADOW_GOAT.get(), world);
 	}
 
-	public QuivagerEntity(EntityType<QuivagerEntity> type, Level world) {
+	public ShadowGoatEntity(EntityType<ShadowGoatEntity> type, Level world) {
 		super(type, world);
 		setMaxUpStep(0.6f);
-		xpReward = 0;
+		xpReward = 5;
 		setNoAi(false);
-		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(IllagerUniverseModItems.FORK.get()));
-		this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(IllagerUniverseModItems.CHEF_ARMOR_SET_HELMET.get()));
-		this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(IllagerUniverseModItems.CHEF_ARMOR_SET_CHESTPLATE.get()));
 	}
 
 	@Override
@@ -68,18 +73,18 @@ public class QuivagerEntity extends AbstractIllager implements IActionStateMob {
 	protected void registerGoals() {
 		super.registerGoals();
 		goalSelector.addGoal(0, new DoNothingGoal(this));
-		goalSelector.addGoal(1, new ActionStateMobMeleeAttackSprintGoal(this, 1, false));
+		goalSelector.addGoal(1, new ActionStateMobMeleeAttackSprintGoal(this, 1.5, false));
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 		this.goalSelector.addGoal(1, new RandomStrollGoal(this, 1));
 		this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
 		this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
 		this.goalSelector.addGoal(4, new FloatGoal(this));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true, false));
-		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, AbstractVillager.class, true, false));
-		this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, AbstractGolem.class, true, false));
 	}
 
-	public int actionTicks, animTicks, animTicksO, walkTransitionAmplitude, walkTransitionAmplitudeO;
-	public LivingEntity lockedTarget;
+	public int actionTicks, animTicks, animTicksO, prevActionState = 0, fadeInTicks = 0;
+	public ArrayList<FadingOutAnimation> fadingAnims = new ArrayList<FadingOutAnimation>();
 
 	public int getActionState() {
 		return entityData.get(DATA_actionState);
@@ -90,7 +95,7 @@ public class QuivagerEntity extends AbstractIllager implements IActionStateMob {
 	}
 
 	public boolean shouldNotMove() {
-		return entityData.get(DATA_actionState) > 1;
+		return entityData.get(DATA_actionState) == 1;
 	}
 
 	public boolean isAlliedTo(Entity p_33314_) {
@@ -107,7 +112,9 @@ public class QuivagerEntity extends AbstractIllager implements IActionStateMob {
 		super.onSyncedDataUpdated(p_21104_);
 		if (level().isClientSide()) {
 			if (p_21104_.equals(DATA_actionState)) {
-				animTicks = animTicksO = 0;
+				fadingAnims.add(new FadingOutAnimation(fadingAnims, animTicks, Math.min(animTicks, 5), prevActionState));
+				prevActionState = entityData.get(DATA_actionState);
+				animTicks = animTicksO = fadeInTicks = 0;
 			}
 		}
 	}
@@ -116,23 +123,40 @@ public class QuivagerEntity extends AbstractIllager implements IActionStateMob {
 	}
 
 	@Override
+	public MobType getMobType() {
+		return MobType.UNDEFINED;
+	}
+
+	@Override
 	public SoundEvent getAmbientSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.vindicator.ambient"));
+		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.goat.screaming.ambient"));
+	}
+
+	@Override
+	public void playStepSound(BlockPos pos, BlockState blockIn) {
+		this.playSound(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.goat.step")), 0.15f, 1);
 	}
 
 	@Override
 	public SoundEvent getHurtSound(DamageSource ds) {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.vindicator.hurt"));
+		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.goat.screaming.hurt"));
 	}
 
 	@Override
 	public SoundEvent getDeathSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.vindicator.death"));
+		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.goat.screaming.death"));
 	}
 
 	@Override
 	public SoundEvent getCelebrateSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.vindicator.celebrate"));
+		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ghast.scream"));
+	}
+
+	@Override
+	public boolean hurt(DamageSource damagesource, float amount) {
+		if (damagesource.is(DamageTypes.FALL))
+			return false;
+		return super.hurt(damagesource, amount);
 	}
 
 	@Override
@@ -151,11 +175,11 @@ public class QuivagerEntity extends AbstractIllager implements IActionStateMob {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		QuivagerOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
+		ShadowGoatOnEntityTickUpdateProcedure.execute(this.level(), this);
 	}
 
 	public static void init() {
-		Raid.RaiderType.create("quivager", IllagerUniverseModEntities.QUIVAGER.get(), new int[]{0, 0, 1, 0, 0, 0, 2, 0});
+		Raid.RaiderType.create("shadow_goat", IllagerUniverseModEntities.SHADOW_GOAT.get(), new int[]{0, 4, 3, 3, 4, 4, 4, 2});
 	}
 
 	@Override
@@ -164,10 +188,10 @@ public class QuivagerEntity extends AbstractIllager implements IActionStateMob {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		AttributeSupplier.Builder builder = Mob.createMobAttributes();
-		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.3);
-		builder = builder.add(Attributes.MAX_HEALTH, 25);
+		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.2);
+		builder = builder.add(Attributes.MAX_HEALTH, 20);
 		builder = builder.add(Attributes.ARMOR, 0);
-		builder = builder.add(Attributes.ATTACK_DAMAGE, 1);
+		builder = builder.add(Attributes.ATTACK_DAMAGE, 4);
 		builder = builder.add(Attributes.FOLLOW_RANGE, 64);
 		return builder;
 	}

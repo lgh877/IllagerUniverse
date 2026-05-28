@@ -23,7 +23,7 @@ import net.minecraft.network.protocol.Packet;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class IronForkProjectileEntity extends AbstractArrow implements ItemSupplier {
-	public static final ItemStack PROJECTILE_ITEM = new ItemStack(IllagerUniverseModItems.IRON_FORK.get());
+	public static final ItemStack PROJECTILE_ITEM = new ItemStack(IllagerUniverseModItems.FORK.get());
 
 	public IronForkProjectileEntity(PlayMessages.SpawnEntity packet, Level world) {
 		super(IllagerUniverseModEntities.IRON_FORK_PROJECTILE.get(), world);
@@ -54,7 +54,7 @@ public class IronForkProjectileEntity extends AbstractArrow implements ItemSuppl
 
 	@Override
 	protected ItemStack getPickupItem() {
-		return PROJECTILE_ITEM;
+		return new ItemStack(IllagerUniverseModItems.FORK.get());
 	}
 
 	@Override

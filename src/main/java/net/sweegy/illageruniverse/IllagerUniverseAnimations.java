@@ -14,15 +14,26 @@
 */
 package net.sweegy.illageruniverse;
 
+import net.sweegy.illageruniverse.client.model.animations.shadow_goatAnimation;
 import net.sweegy.illageruniverse.client.model.animations.quivagerAnimation;
 import net.sweegy.illageruniverse.client.model.animations.IllagerBanditAnimation;
 
 import net.minecraft.client.animation.AnimationDefinition;
 
 public class IllagerUniverseAnimations {
+	public static final AnimationDefinition[] BanditAnimations = {//
+			IllagerBanditAnimation.attack, //
+			IllagerBanditAnimation.lunge, //
+	};
 	public static final AnimationDefinition[] QuivagerAnimations = {//
 			quivagerAnimation.stab, //
 			quivagerAnimation.throwAttack, //
 			quivagerAnimation.eat, //
+	};
+	public static final AnimationDefinition[] ShadowGoatAnimations = {//
+			shadow_goatAnimation.Idle, //
+			shadow_goatAnimation.AttackFast, //
+			shadow_goatAnimation.Walk, //
+			shadow_goatAnimation.Run, //
 	};
 }

@@ -2,7 +2,7 @@
   "_fv": 85,
   "_type": "livingentity",
   "definition": {
-    "mobName": "Bandit",
+    "mobName": "Lootthief",
     "mobLabel": "",
     "mobModelName": "ModelIllagerBandit",
     "mobModelTexture": "bandit.png",
@@ -99,7 +99,7 @@
     "trackingRange": 64,
     "followRange": 16,
     "health": 16,
-    "xpAmount": 0,
+    "xpAmount": 5,
     "waterMob": false,
     "breatheUnderwater": {
       "fixedValue": false
@@ -152,6 +152,13 @@
         "name": "actionState",
         "type": "integer",
         "value": 0
+      },
+      {
+        "min": -2147483648,
+        "max": 2147483647,
+        "name": "modelPartsToHide",
+        "type": "integer",
+        "value": 0
       }
     ],
     "onMobTickUpdate": {
@@ -159,7 +166,7 @@
     },
     "hasAI": true,
     "aiBase": "(none)",
-    "aixml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"aitasks_container\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"java_code\"><field name=\"CODE\">goalSelector.addGoal(0, new DoNothingGoal(this));&amp;#10;&amp;#10;goalSelector.addGoal(1, new ActionStateMobMeleeAttackGoal(this, 1, false));&amp;#10;</field><next><block type=\"wander\"><field name=\"speed\">1</field><field name=\"condition\">null,null</field><next><block type=\"attack_action\"><field name=\"callhelp\">FALSE</field><field name=\"condition\">null,null</field><next><block type=\"look_around\"><field name=\"condition\">null,null</field><next><block type=\"swim_in_water\"><field name=\"condition\">null,null</field><next><block type=\"java_code\"><field name=\"CODE\">      this.targetSelector.addGoal(2, new NearestAttackableTargetGoal&lt;&gt;(this, Player.class, true));&amp;#10;      this.targetSelector.addGoal(3, new NearestAttackableTargetGoal&lt;&gt;(this, AbstractVillager.class, false));&amp;#10;      this.targetSelector.addGoal(3, new NearestAttackableTargetGoal&lt;&gt;(this, IronGolem.class, true));&amp;#10;}&amp;#10;public int actionTicks&amp;#10;, animTicks, animTicksO&amp;#10;, walkTransitionAmplitude, walkTransitionAmplitudeO;&amp;#10;&amp;#10;public int getActionState(){&amp;#10;return entityData.get(DATA_actionState);&amp;#10;}&amp;#10;&amp;#10;public void setActionState(int input){&amp;#10;entityData.set(DATA_actionState, input);&amp;#10;}&amp;#10;&amp;#10;public boolean shouldNotMove(){&amp;#10;return entityData.get(DATA_actionState) != 0;&amp;#10;}&amp;#10;&amp;#10;/* codes storage&amp;#10;\t\t\t\tfloat partialTicks = ageInTicks - entity.tickCount;&amp;#10;\t\t\t\tfloat walkTransitionAmplitude = Mth.lerp(partialTicks, entity.walkTransitionAmplitudeO, entity.walkTransitionAmplitude) / 3F;&amp;#10;\t\t\t\tthis.animate(entity.animationState0, IllagerBanditAnimation.idle, ageInTicks, 1f);&amp;#10;\t\t\t\tthis.animateWalk(IllagerBanditAnimation.walk, limbSwing, limbSwingAmount * walkTransitionAmplitude, 1f, 2f);&amp;#10;\t\t\t\tthis.animateWalk(IllagerBanditAnimation.aggro, limbSwing, limbSwingAmount * (1 - walkTransitionAmplitude), 1f, 2f);&amp;#10;\t\t\t\tif (entity.getActionState() != 0) {&amp;#10;\t\t\t\t\tfloat animTicks = Mth.lerp(partialTicks, entity.animTicksO, entity.animTicks);&amp;#10;\t\t\t\t\tthis.animateWalk(IllagerUniverseAnimations.BanditAnimations[entity.getActionState() - 1], animTicks, 1f, 1f, 1f);&amp;#10;\t\t\t\t}&amp;#10;*/&amp;#10;&amp;#10;{</field></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>",
+    "aixml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"aitasks_container\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"java_code\"><field name=\"CODE\">goalSelector.addGoal(0, new DoNothingGoal(this));&amp;#10;&amp;#10;goalSelector.addGoal(1, new ActionStateMobMeleeAttackGoal(this, 1, false));&amp;#10;</field><next><block type=\"wander\"><field name=\"speed\">1</field><field name=\"condition\">null,null</field><next><block type=\"attack_action\"><field name=\"callhelp\">FALSE</field><field name=\"condition\">null,null</field><next><block type=\"look_around\"><field name=\"condition\">null,null</field><next><block type=\"swim_in_water\"><field name=\"condition\">null,null</field><next><block type=\"java_code\"><field name=\"CODE\">      this.targetSelector.addGoal(2, new NearestAttackableTargetGoal&lt;&gt;(this, Player.class, true));&amp;#10;      this.targetSelector.addGoal(3, new NearestAttackableTargetGoal&lt;&gt;(this, AbstractVillager.class, false));&amp;#10;      this.targetSelector.addGoal(3, new NearestAttackableTargetGoal&lt;&gt;(this, IronGolem.class, true));&amp;#10;}&amp;#10;&amp;#10;\tpublic AnimationDefinition currentAnimation;&amp;#10;\tpublic int actionTicks, animTicks, animTicksO, walkTransitionAmplitude, walkTransitionAmplitudeO;&amp;#10;&amp;#10;\t@Override&amp;#10;\tpublic void setItemSlot(EquipmentSlot slot, ItemStack itemStack) {&amp;#10;\t\tItemStack previousItem = this.getItemBySlot(slot);&amp;#10;\t\tsuper.setItemSlot(slot, itemStack);&amp;#10;\t\tif (!this.level().isClientSide) {&amp;#10;\t\t\tif (!previousItem.isEmpty() &amp;&amp; (itemStack.isEmpty() || previousItem.getItem() != itemStack.getItem())) {&amp;#10;\t\t\t\tswitch (slot) {&amp;#10;\t\t\t\t\tcase HEAD -&gt; entityData.set(DATA_modelPartsToHide, Math.max(0, entityData.get(DATA_modelPartsToHide) &amp; ~1));&amp;#10;\t\t\t\t\tcase CHEST -&gt; entityData.set(DATA_modelPartsToHide, Math.max(0, entityData.get(DATA_modelPartsToHide) &amp; ~2));&amp;#10;\t\t\t\t}&amp;#10;\t\t\t}&amp;#10;\t\t\tif (!itemStack.isEmpty() &amp;&amp; (previousItem.isEmpty() || previousItem.getItem() != itemStack.getItem())) {&amp;#10;\t\t\t\tswitch (slot) {&amp;#10;\t\t\t\t\tcase HEAD -&gt; entityData.set(DATA_modelPartsToHide, entityData.get(DATA_modelPartsToHide) | 1);&amp;#10;\t\t\t\t\tcase CHEST -&gt; entityData.set(DATA_modelPartsToHide, entityData.get(DATA_modelPartsToHide) | 2);&amp;#10;\t\t\t\t}&amp;#10;\t\t\t}&amp;#10;\t\t}&amp;#10;\t}&amp;#10;&amp;#10;\tpublic boolean getModelPartToHide(int p_20292_) {&amp;#10;\t\treturn (this.entityData.get(DATA_modelPartsToHide) &amp; 1 &lt;&lt; p_20292_) != 0;&amp;#10;\t}&amp;#10;&amp;#10;\tpublic int getActionState() {&amp;#10;\t\treturn entityData.get(DATA_actionState);&amp;#10;\t}&amp;#10;&amp;#10;\tpublic void setActionState(int input) {&amp;#10;\t\tentityData.set(DATA_actionState, input);&amp;#10;\t}&amp;#10;&amp;#10;\tpublic boolean shouldNotMove() {&amp;#10;\t\treturn entityData.get(DATA_actionState) != 0;&amp;#10;\t}&amp;#10;&amp;#10;\tpublic boolean isAlliedTo(Entity p_33314_) {&amp;#10;\t\tif (super.isAlliedTo(p_33314_)) {&amp;#10;\t\t\treturn true;&amp;#10;\t\t} else if (p_33314_ instanceof LivingEntity &amp;&amp; ((LivingEntity) p_33314_).getMobType() == MobType.ILLAGER) {&amp;#10;\t\t\treturn this.getTeam() == null &amp;&amp; p_33314_.getTeam() == null;&amp;#10;\t\t} else {&amp;#10;\t\t\treturn false;&amp;#10;\t\t}&amp;#10;\t}&amp;#10;&amp;#10;\tpublic void onSyncedDataUpdated(EntityDataAccessor&lt;?&gt; p_21104_) {&amp;#10;\t\tsuper.onSyncedDataUpdated(p_21104_);&amp;#10;\t\tif (level().isClientSide()) {&amp;#10;\t\t\tif (p_21104_.equals(DATA_actionState)) {&amp;#10;\t\t\t\tanimTicks = animTicksO = 0;&amp;#10;\t\t\t\tswitch (entityData.get(DATA_actionState)) {&amp;#10;\t\t\t\t\tcase 1 -&gt; currentAnimation = IllagerBanditAnimation.attack;&amp;#10;\t\t\t\t\tcase 2 -&gt; currentAnimation = IllagerBanditAnimation.lunge;&amp;#10;\t\t\t\t}&amp;#10;\t\t\t}&amp;#10;\t\t}&amp;#10;\t}&amp;#10;</field></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>",
     "breedable": false,
     "tameable": false,
     "breedTriggerItems": [],

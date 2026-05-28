@@ -5,7 +5,7 @@
   "experience": 3,
   "cookingtime": 200,
   "ingredient": {
-    "item": "illager_universe:iron_fork"
+    "item": "illager_universe:fork"
   },
   "result": "minecraft:iron_ingot"
 }

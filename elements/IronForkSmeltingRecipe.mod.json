@@ -5,18 +5,14 @@
     "recipeType": "Smelting",
     "recipeRetstackSize": 1,
     "group": "fork_smelting_recipe_group",
-    "unlockingItems": [
-      {
-        "value": "CUSTOM:IronFork"
-      }
-    ],
+    "unlockingItems": [],
     "cookingBookCategory": "MISC",
     "xpReward": 3.0,
     "cookingTime": 200,
     "craftingBookCategory": "MISC",
     "recipeShapeless": false,
     "smeltingInputStack": {
-      "value": "CUSTOM:IronFork"
+      "value": "CUSTOM:Fork"
     },
     "smeltingReturnStack": {
       "value": "Items.IRON_INGOT"
