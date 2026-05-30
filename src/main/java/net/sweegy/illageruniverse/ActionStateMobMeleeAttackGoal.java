@@ -19,10 +19,16 @@ import net.minecraft.world.entity.PathfinderMob;
 
 public class ActionStateMobMeleeAttackGoal<T extends PathfinderMob & IActionStateMob> extends MeleeAttackGoal {
 	protected final T actionStateMob;
+	private final int meleeAttackState;
 
-	public ActionStateMobMeleeAttackGoal(T a, double b, boolean c) {
+	public ActionStateMobMeleeAttackGoal(T a, double b, boolean c, int meleeAttackState) {
 		super(a, b, c);
 		actionStateMob = a;
+		this.meleeAttackState = meleeAttackState;
+	}
+
+	public ActionStateMobMeleeAttackGoal(T a, double b, boolean c) {
+		this(a, b, c, 1);
 	}
 
 	@Override
@@ -32,7 +38,7 @@ public class ActionStateMobMeleeAttackGoal<T extends PathfinderMob & IActionStat
 
 	@Override
 	protected void resetAttackCooldown() {
-		actionStateMob.setActionState(1);
+		actionStateMob.setActionState(meleeAttackState);
 		super.resetAttackCooldown();
 	}
 }

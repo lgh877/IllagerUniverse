@@ -21,6 +21,10 @@ public class ActionStateMobMeleeAttackSprintGoal<T extends PathfinderMob & IActi
 		super(a, b, c);
 	}
 
+	public ActionStateMobMeleeAttackSprintGoal(T a, double b, boolean c, int d) {
+		super(a, b, c, d);
+	}
+
 	public void start() {
 		super.start();
 		mob.setSprinting(true);
