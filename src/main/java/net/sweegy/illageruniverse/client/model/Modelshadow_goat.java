@@ -28,7 +28,6 @@ public class Modelshadow_goat<T extends Entity> extends EntityModel<T> {
 	public final ModelPart right_front_leg;
 	public final ModelPart left_front_leg;
 	public final ModelPart body;
-	public final ModelPart tail;
 	public final ModelPart trueHead;
 	public final ModelPart head;
 	public final ModelPart mirror;
@@ -43,7 +42,6 @@ public class Modelshadow_goat<T extends Entity> extends EntityModel<T> {
 		this.right_front_leg = this.All.getChild("right_front_leg");
 		this.left_front_leg = this.All.getChild("left_front_leg");
 		this.body = this.All.getChild("body");
-		this.tail = this.body.getChild("tail");
 		this.trueHead = this.body.getChild("trueHead");
 		this.head = this.trueHead.getChild("head");
 		this.mirror = this.head.getChild("mirror");
@@ -63,10 +61,9 @@ public class Modelshadow_goat<T extends Entity> extends EntityModel<T> {
 		PartDefinition body = All.addOrReplaceChild("body",
 				CubeListBuilder.create().texOffs(1, 1).addBox(-4.5F, -5.75F, -6.25F, 9.0F, 11.0F, 16.0F, new CubeDeformation(0.0F)).texOffs(0, 28).addBox(-5.5F, -6.75F, -7.25F, 11.0F, 14.0F, 11.0F, new CubeDeformation(0.0F)),
 				PartPose.offset(3.0F, 7.75F, 8.75F));
-		PartDefinition tail = body.addOrReplaceChild("tail", CubeListBuilder.create(), PartPose.offset(0.0F, -0.25F, 1.75F));
 		PartDefinition trueHead = body.addOrReplaceChild("trueHead", CubeListBuilder.create(), PartPose.offset(0.0F, -7.75F, -8.75F));
-		PartDefinition head = trueHead.addOrReplaceChild("head", CubeListBuilder.create().texOffs(23, 52).addBox(0.0F, 7.0F, -4.5F, 0.0F, 7.0F, 5.0F, new CubeDeformation(0.0F)).texOffs(2, 61)
-				.addBox(-5.5F, 0.0F, 0.5F, 3.0F, 2.0F, 1.0F, new CubeDeformation(0.0F)).texOffs(0, 0).addBox(-0.5F, 8.0F, 8.5F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+		PartDefinition head = trueHead.addOrReplaceChild("head",
+				CubeListBuilder.create().texOffs(23, 52).addBox(0.0F, 7.0F, -4.5F, 0.0F, 7.0F, 5.0F, new CubeDeformation(0.0F)).texOffs(2, 61).addBox(-5.5F, 0.0F, 0.5F, 3.0F, 2.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 		PartDefinition mirror = head.addOrReplaceChild("mirror", CubeListBuilder.create().texOffs(2, 61).mirror().addBox(-0.5F, 0.0F, 0.5F, 3.0F, 2.0F, 1.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(3.0F, 0.0F, 0.0F));
 		PartDefinition left_horn = head.addOrReplaceChild("left_horn",
 				CubeListBuilder.create().texOffs(12, 55).addBox(-1.0F, -6.25F, -1.0F, 2.0F, 7.0F, 2.0F, new CubeDeformation(0.0F)).texOffs(12, 55).addBox(-1.0F, -6.25F, 1.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)),

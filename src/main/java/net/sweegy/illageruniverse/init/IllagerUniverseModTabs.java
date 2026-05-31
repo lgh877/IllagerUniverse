@@ -26,5 +26,6 @@ public class IllagerUniverseModTabs {
 				tabData.accept(IllagerUniverseModItems.CHEF_ARMOR_SET_CHESTPLATE.get());
 				tabData.accept(IllagerUniverseModItems.FORK.get());
 				tabData.accept(IllagerUniverseModItems.SHADOW_GOAT_SPAWN_EGG.get());
+				tabData.accept(IllagerUniverseModItems.UPGRADER_SPAWN_EGG.get());
 			}).build());
 }

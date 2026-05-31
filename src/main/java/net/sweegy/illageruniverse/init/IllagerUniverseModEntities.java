@@ -3,11 +3,7 @@
  */
 package net.sweegy.illageruniverse.init;
 
-import net.sweegy.illageruniverse.entity.ShadowGoatEntity;
-import net.sweegy.illageruniverse.entity.QuivagerEntity;
-import net.sweegy.illageruniverse.entity.IronForkProjectileEntity;
-import net.sweegy.illageruniverse.entity.BombagerEntity;
-import net.sweegy.illageruniverse.entity.BanditEntity;
+import net.sweegy.illageruniverse.entity.*;
 import net.sweegy.illageruniverse.IllagerUniverseMod;
 
 import net.minecraftforge.registries.RegistryObject;
@@ -43,6 +39,10 @@ public class IllagerUniverseModEntities {
 			EntityType.Builder.<ShadowGoatEntity>of(ShadowGoatEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(ShadowGoatEntity::new)
 
 					.sized(0.9f, 1.3f));
+	public static final RegistryObject<EntityType<UpgraderEntity>> UPGRADER = register("upgrader",
+			EntityType.Builder.<UpgraderEntity>of(UpgraderEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(UpgraderEntity::new)
+
+					.sized(0.6f, 1.8f));
 
 	// Start of user code block custom entities
 	// End of user code block custom entities
@@ -57,6 +57,7 @@ public class IllagerUniverseModEntities {
 			QuivagerEntity.init();
 			BombagerEntity.init();
 			ShadowGoatEntity.init();
+			UpgraderEntity.init();
 		});
 	}
 
@@ -66,5 +67,6 @@ public class IllagerUniverseModEntities {
 		event.put(QUIVAGER.get(), QuivagerEntity.createAttributes().build());
 		event.put(BOMBAGER.get(), BombagerEntity.createAttributes().build());
 		event.put(SHADOW_GOAT.get(), ShadowGoatEntity.createAttributes().build());
+		event.put(UPGRADER.get(), UpgraderEntity.createAttributes().build());
 	}
 }

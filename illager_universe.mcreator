@@ -442,19 +442,150 @@
         ]
       },
       "path": "~/mobs/shadowGoat"
+    },
+    {
+      "name": "ActionStateMobMeleeAttackGoalNoAttack",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "action_state_mob_melee_attack_goal_no_attack",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/ActionStateMobMeleeAttackGoalNoAttack.java"
+        ]
+      },
+      "path": "~/goals"
+    },
+    {
+      "name": "ActionStateMobMeleeAttackSprintGoalNoAttack",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "action_state_mob_melee_attack_sprint_goal_no_attack",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/ActionStateMobMeleeAttackSprintGoalNoAttack.java"
+        ]
+      },
+      "path": "~/goals"
+    },
+    {
+      "name": "Upgrader",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "upgrader",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/client/renderer/UpgraderRenderer.java",
+          "src/main/java/net/sweegy/illageruniverse/entity/UpgraderEntity.java",
+          "src/main/resources/assets/illager_universe/models/item/upgrader_spawn_egg.json"
+        ]
+      },
+      "path": "~/mobs/upgrader"
+    },
+    {
+      "name": "UpgraderOnInitialEntitySpawn",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "upgrader_on_initial_entity_spawn",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/procedures/UpgraderOnInitialEntitySpawnProcedure.java"
+        ]
+      },
+      "path": "~/mobs/upgrader"
+    },
+    {
+      "name": "UpgraderOnEntityTickUpdate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "upgrader_on_entity_tick_update",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/procedures/UpgraderOnEntityTickUpdateProcedure.java"
+        ]
+      },
+      "path": "~/mobs/upgrader"
+    },
+    {
+      "name": "ICanWearArmors",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "i_can_wear_armors",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/ICanWearArmors.java"
+        ]
+      },
+      "path": "~/interfaces"
     }
   ],
   "variable_elements": [],
-  "sound_elements": [],
+  "sound_elements": [
+    {
+      "name": "upgrader_idle",
+      "files": [
+        "d3_sfx_mob_mountaineerattack-001",
+        "d3_sfx_mob_mountaineerattack-002",
+        "d3_sfx_mob_mountaineerattack-003",
+        "d3_sfx_mob_mountaineerattack-004"
+      ],
+      "category": "hostile",
+      "subtitle": "Upgrader says"
+    },
+    {
+      "name": "upgrader_death",
+      "files": [
+        "d3_sfx_mob_mountaineerdeath-001",
+        "d3_sfx_mob_mountaineerdeath-002",
+        "d3_sfx_mob_mountaineerdeath-003"
+      ],
+      "category": "hostile",
+      "subtitle": "Upgrader dies"
+    },
+    {
+      "name": "upgrader_hurt",
+      "files": [
+        "d3_sfx_mob_mountaineerhurt-001",
+        "d3_sfx_mob_mountaineerhurt-002",
+        "d3_sfx_mob_mountaineerhurt-003",
+        "d3_sfx_mob_mountaineerhurt-004"
+      ],
+      "category": "hostile",
+      "subtitle": "Upgrader is damaged"
+    }
+  ],
   "tag_elements": {
     "ITEMS:minecraft:swords": [
       "~CUSTOM:IronCutlass"
     ],
     "ENTITIES:minecraft:raiders": [
-      "~CUSTOM:ShadowGoat",
-      "~CUSTOM:Bombager",
-      "~CUSTOM:Quivager",
-      "~CUSTOM:Bandit"
+      "~CUSTOM:Upgrader",
+      "~CUSTOM:Bombager"
     ]
   },
   "tab_element_order": {},
@@ -472,7 +603,12 @@
       "item.illager_universe.chef_armor_set_chestplate": "Apron",
       "item.illager_universe.fork": "Fork",
       "entity.illager_universe.shadow_goat": "Shadow Goat",
-      "item.illager_universe.shadow_goat_spawn_egg": "Shadow Goat Spawn Egg"
+      "item.illager_universe.shadow_goat_spawn_egg": "Shadow Goat Spawn Egg",
+      "entity.illager_universe.upgrader": "Upgrader",
+      "item.illager_universe.upgrader_spawn_egg": "Upgrader Spawn Egg",
+      "subtitles.upgrader_idle": "Upgrader says",
+      "subtitles.upgrader_death": "Upgrader dies",
+      "subtitles.upgrader_hurt": "Upgrader is damaged"
     }
   },
   "metadata": {
@@ -480,6 +616,8 @@
       "src/main/java/net/sweegy/illageruniverse/init/IllagerUniverseModItems.java",
       "src/main/java/net/sweegy/illageruniverse/init/IllagerUniverseModEntities.java",
       "src/main/java/net/sweegy/illageruniverse/init/IllagerUniverseModEntityRenderers.java",
+      "src/main/resources/assets/illager_universe/sounds.json",
+      "src/main/java/net/sweegy/illageruniverse/init/IllagerUniverseModSounds.java",
       "src/main/resources/META-INF/mods.toml",
       "src/main/java/net/sweegy/illageruniverse/init/IllagerUniverseModModels.java",
       "src/main/java/net/sweegy/illageruniverse/IllagerUniverseMod.java",
@@ -507,6 +645,10 @@
           },
           {
             "name": "shadowGoat",
+            "children": []
+          },
+          {
+            "name": "upgrader",
             "children": []
           }
         ]

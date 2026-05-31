@@ -14,6 +14,7 @@
 */
 package net.sweegy.illageruniverse;
 
+import net.sweegy.illageruniverse.client.model.animations.upgraderAnimation;
 import net.sweegy.illageruniverse.client.model.animations.shadow_goatAnimation;
 import net.sweegy.illageruniverse.client.model.animations.quivagerAnimation;
 import net.sweegy.illageruniverse.client.model.animations.IllagerBanditAnimation;
@@ -35,5 +36,11 @@ public class IllagerUniverseAnimations {
 			shadow_goatAnimation.AttackFast, //
 			shadow_goatAnimation.Walk, //
 			shadow_goatAnimation.Run, //
+	};
+	public static final AnimationDefinition[] UpgraderAnimations = {//
+			upgraderAnimation.idle, //
+			upgraderAnimation.upgrade, //
+			upgraderAnimation.walk, //
+			upgraderAnimation.run, //
 	};
 }

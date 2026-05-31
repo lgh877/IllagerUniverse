@@ -1,15 +1,16 @@
 package net.sweegy.illageruniverse.procedures;
 
-import net.sweegy.illageruniverse.entity.ShadowGoatEntity;
+import net.sweegy.illageruniverse.entity.UpgraderEntity;
 import net.sweegy.illageruniverse.FadingOutAnimation;
 
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 
-public class ShadowGoatOnEntityTickUpdateProcedure {
+public class UpgraderOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
-		ShadowGoatEntity mob = (ShadowGoatEntity) entity;
+		if (entity == null)
+			return;
+		UpgraderEntity mob = (UpgraderEntity) entity;
 		if (world.isClientSide()) {
 			mob.animTicksO = mob.animTicks++;
 			mob.fadeInTicks = Math.min(mob.fadeInTicks + 1, 5);
@@ -22,17 +23,7 @@ public class ShadowGoatOnEntityTickUpdateProcedure {
 			switch (actionState) {
 				case 1 :
 					mob.actionTicks++;
-					if (mob.actionTicks == 9) {
-						LivingEntity target = mob.getTarget();
-						if (target != null) {
-							double d0 = mob.getPerceivedTargetDistanceSquareForMeleeAttack(target);
-							double width = mob.getBbWidth();
-							if (d0 < width * width * 4.0F + target.getBbWidth()) {
-								target.invulnerableTime = 0;
-								mob.doHurtTarget(target);
-							}
-						}
-					} else if (mob.actionTicks > 11) {
+					if (mob.actionTicks > 45) {
 						mob.actionTicks = 0;
 						mob.setActionState(0);
 					}

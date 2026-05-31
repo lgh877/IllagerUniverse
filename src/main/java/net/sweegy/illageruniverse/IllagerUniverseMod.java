@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import net.sweegy.illageruniverse.init.IllagerUniverseModTabs;
+import net.sweegy.illageruniverse.init.IllagerUniverseModSounds;
 import net.sweegy.illageruniverse.init.IllagerUniverseModItems;
 import net.sweegy.illageruniverse.init.IllagerUniverseModEntities;
 
@@ -43,6 +44,7 @@ public class IllagerUniverseMod {
 		// End of user code block mod constructor
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = context.getModEventBus();
+		IllagerUniverseModSounds.REGISTRY.register(bus);
 		IllagerUniverseModItems.REGISTRY.register(bus);
 		IllagerUniverseModEntities.REGISTRY.register(bus);
 		IllagerUniverseModTabs.REGISTRY.register(bus);

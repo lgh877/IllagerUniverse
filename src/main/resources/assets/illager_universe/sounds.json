@@ -1,0 +1,61 @@
+{
+  "upgrader_idle": {
+    "subtitle": "subtitles.upgrader_idle",
+    "sounds": [
+      {
+        "name": "illager_universe:d3_sfx_mob_mountaineerattack-001",
+        "stream": false
+      },
+      {
+        "name": "illager_universe:d3_sfx_mob_mountaineerattack-002",
+        "stream": false
+      },
+      {
+        "name": "illager_universe:d3_sfx_mob_mountaineerattack-003",
+        "stream": false
+      },
+      {
+        "name": "illager_universe:d3_sfx_mob_mountaineerattack-004",
+        "stream": false
+      }
+    ]
+  },
+  "upgrader_death": {
+    "subtitle": "subtitles.upgrader_death",
+    "sounds": [
+      {
+        "name": "illager_universe:d3_sfx_mob_mountaineerdeath-001",
+        "stream": false
+      },
+      {
+        "name": "illager_universe:d3_sfx_mob_mountaineerdeath-002",
+        "stream": false
+      },
+      {
+        "name": "illager_universe:d3_sfx_mob_mountaineerdeath-003",
+        "stream": false
+      }
+    ]
+  },
+  "upgrader_hurt": {
+    "subtitle": "subtitles.upgrader_hurt",
+    "sounds": [
+      {
+        "name": "illager_universe:d3_sfx_mob_mountaineerhurt-001",
+        "stream": false
+      },
+      {
+        "name": "illager_universe:d3_sfx_mob_mountaineerhurt-002",
+        "stream": false
+      },
+      {
+        "name": "illager_universe:d3_sfx_mob_mountaineerhurt-003",
+        "stream": false
+      },
+      {
+        "name": "illager_universe:d3_sfx_mob_mountaineerhurt-004",
+        "stream": false
+      }
+    ]
+  }
+}

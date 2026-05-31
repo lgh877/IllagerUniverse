@@ -1,9 +1,7 @@
 {
   "replace": false,
   "values": [
-    "illager_universe:shadow_goat",
-    "illager_universe:bombager",
-    "illager_universe:bandit",
-    "illager_universe:quivager"
+    "illager_universe:upgrader",
+    "illager_universe:bombager"
   ]
 }

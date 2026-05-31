@@ -11,5 +11,10 @@
   "item.illager_universe.chef_armor_set_chestplate": "Apron",
   "item.illager_universe.fork": "Fork",
   "entity.illager_universe.shadow_goat": "Shadow Goat",
-  "item.illager_universe.shadow_goat_spawn_egg": "Shadow Goat Spawn Egg"
+  "item.illager_universe.shadow_goat_spawn_egg": "Shadow Goat Spawn Egg",
+  "entity.illager_universe.upgrader": "Upgrader",
+  "item.illager_universe.upgrader_spawn_egg": "Upgrader Spawn Egg",
+  "subtitles.upgrader_idle": "Upgrader says",
+  "subtitles.upgrader_death": "Upgrader dies",
+  "subtitles.upgrader_hurt": "Upgrader is damaged"
 }
