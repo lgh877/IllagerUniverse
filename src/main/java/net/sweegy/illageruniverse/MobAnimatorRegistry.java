@@ -14,11 +14,13 @@
 */
 package net.sweegy.illageruniverse;
 
+import net.sweegy.illageruniverse.entity.UpgraderEntity;
 import net.sweegy.illageruniverse.entity.ShadowGoatEntity;
 import net.sweegy.illageruniverse.entity.QuivagerEntity;
 import net.sweegy.illageruniverse.entity.BanditEntity;
 import net.sweegy.illageruniverse.client.model.animations.quivagerAnimation;
 import net.sweegy.illageruniverse.client.model.animations.IllagerBanditAnimation;
+import net.sweegy.illageruniverse.client.model.Modelupgrader;
 import net.sweegy.illageruniverse.client.model.Modelshadow_goat;
 import net.sweegy.illageruniverse.client.model.Modelquivager;
 import net.sweegy.illageruniverse.client.model.ModelIllagerBandit;
@@ -171,11 +173,11 @@ public class MobAnimatorRegistry {
 					break;
 				case RIGHT_ARM :
 					right_arm.translateAndRotate(posestack);
-					posestack.translate(0.25, -0.125, 0);
+					posestack.translate(0.125, -0.125, 0);
 					break;
 				case LEFT_ARM :
 					left_arm.translateAndRotate(posestack);
-					posestack.translate(-0.25, -0.125, 0);
+					posestack.translate(-0.125, -0.125, 0);
 					break;
 				case RIGHT_LEG :
 					leg0.translateAndRotate(posestack);
@@ -280,6 +282,49 @@ public class MobAnimatorRegistry {
 		@Override
 		public void setupAnim(ShadowGoatEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 			animator.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+			super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		}
+	}
+
+	public static final class AnimatedUpgraderModel extends Modelupgrader<UpgraderEntity> {
+		private final ModelPart root;
+		private final HierarchicalModel animator = new HierarchicalModel<UpgraderEntity>() {
+			@Override
+			public ModelPart root() {
+				return root;
+			}
+
+			@Override
+			public void setupAnim(UpgraderEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+				this.root().getAllParts().forEach(ModelPart::resetPose);
+				List<FadingOutAnimation> list = entity.getFadingAnims();
+				float partialTicks = ageInTicks - entity.tickCount;
+				float animTicks = Mth.lerp(partialTicks, entity.animTicksO, entity.animTicks);
+				this.animateWalk(IllagerUniverseAnimations.UpgraderAnimations[entity.animIdx], animTicks, (float) Math.min(entity.fadeInTicks + partialTicks, 5) / 5f, 1f, 1f);
+				for (int i = list.size() - 1; i >= 0; i--) {
+					FadingOutAnimation anim = list.get(i);
+					if (anim.shouldBeRemoved) {
+						anim.cleanup();
+						continue;
+					}
+					this.animateWalk(IllagerUniverseAnimations.UpgraderAnimations[anim.animIdx], anim.finalTime, (float) Math.max(anim.remainingFadeOutTime - partialTicks, 0) / anim.maxFadeOutTime, 1f, 1f);
+				}
+			}
+		};
+
+		public AnimatedUpgraderModel(ModelPart root) {
+			super(root);
+			this.root = root;
+		}
+
+		@Override
+		public void setupAnim(UpgraderEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+			animator.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+			boolean hideArm = entity.animIdx != 1;
+			arms.visible = hideArm;
+			right_arm.visible = !hideArm;
+			left_arm.visible = !hideArm;
+			body.yRot = !hideArm ? body.yRot : 0;
 			super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 		}
 	}

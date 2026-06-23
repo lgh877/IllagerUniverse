@@ -16,5 +16,8 @@
   "item.illager_universe.upgrader_spawn_egg": "Upgrader Spawn Egg",
   "subtitles.upgrader_idle": "Upgrader says",
   "subtitles.upgrader_death": "Upgrader dies",
-  "subtitles.upgrader_hurt": "Upgrader is damaged"
+  "subtitles.upgrader_hurt": "Upgrader is damaged",
+  "subtitles.upgrader_upgrade": "Upgrader is preparing an upgrade",
+  "entity.illager_universe.upgrader_armor": "Upgrader Armor",
+  "item.illager_universe.upgrader_armor_spawn_egg": "Upgrader Armor Spawn Egg"
 }

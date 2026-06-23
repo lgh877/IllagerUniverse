@@ -1,0 +1,159 @@
+{
+  "_fv": 85,
+  "_type": "livingentity",
+  "definition": {
+    "mobName": "Upgrader Armor",
+    "mobLabel": "",
+    "mobModelName": "Biped",
+    "mobModelTexture": "nothing.png",
+    "transparentModelCondition": {
+      "fixedValue": false
+    },
+    "isShakingCondition": {
+      "fixedValue": false
+    },
+    "solidBoundingBox": {
+      "fixedValue": false
+    },
+    "visualScale": {
+      "fixedValue": 1.0
+    },
+    "boundingBoxScale": {
+      "fixedValue": 1.0
+    },
+    "modelLayers": [],
+    "animations": [],
+    "modelWidth": 0.6,
+    "modelHeight": 0.6,
+    "modelShadowSize": 0.5,
+    "mountedYOffset": 0.0,
+    "hasSpawnEgg": true,
+    "spawnEggBaseColor": {
+      "value": -1,
+      "falpha": 0.0
+    },
+    "spawnEggDotColor": {
+      "value": -1,
+      "falpha": 0.0
+    },
+    "spawnEggTexture": "",
+    "creativeTabs": [],
+    "isBoss": false,
+    "bossBarColor": "PINK",
+    "bossBarType": "PROGRESS",
+    "equipmentMainHand": {
+      "value": ""
+    },
+    "equipmentOffHand": {
+      "value": ""
+    },
+    "equipmentHelmet": {
+      "value": "Items.IRON_HELMET"
+    },
+    "equipmentBody": {
+      "value": ""
+    },
+    "equipmentLeggings": {
+      "value": ""
+    },
+    "equipmentBoots": {
+      "value": ""
+    },
+    "mobBehaviourType": "Creature",
+    "mobCreatureType": "UNDEFINED",
+    "attackStrength": 3,
+    "attackKnockback": 0.0,
+    "knockbackResistance": 0.0,
+    "movementSpeed": 0.3,
+    "stepHeight": 0.6,
+    "armorBaseValue": 0.0,
+    "trackingRange": 64,
+    "followRange": 16,
+    "health": 10,
+    "xpAmount": 0,
+    "waterMob": false,
+    "breatheUnderwater": {
+      "fixedValue": false
+    },
+    "pushedByFluids": {
+      "fixedValue": true
+    },
+    "flyingMob": false,
+    "inventorySize": 9,
+    "inventoryStackSize": 99,
+    "disableCollisions": true,
+    "ridable": false,
+    "canControlForward": false,
+    "canControlStrafe": false,
+    "immuneToFire": false,
+    "immuneToArrows": false,
+    "immuneToFallDamage": false,
+    "immuneToCactus": false,
+    "immuneToDrowning": false,
+    "immuneToLightning": false,
+    "immuneToPotions": false,
+    "immuneToPlayer": false,
+    "immuneToExplosion": false,
+    "immuneToTrident": false,
+    "immuneToAnvil": false,
+    "immuneToWither": false,
+    "immuneToDragonBreath": false,
+    "mobDrop": {
+      "value": ""
+    },
+    "livingSound": {
+      "value": ""
+    },
+    "hurtSound": {
+      "value": ""
+    },
+    "deathSound": {
+      "value": ""
+    },
+    "stepSound": {
+      "value": ""
+    },
+    "raidCelebrationSound": {
+      "value": ""
+    },
+    "entityDataEntries": [],
+    "onMobTickUpdate": {
+      "name": "UpgraderArmorOnEntityTickUpdate"
+    },
+    "hasAI": true,
+    "aiBase": "(none)",
+    "aixml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"aitasks_container\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"java_code\"><field name=\"CODE\">}&amp;#10;&amp;#10;public void setItemSlot(EquipmentSlot p_21416_, ItemStack p_21417_) {&amp;#10;if(canModifyArmor)&amp;#10;super.setItemSlot(p_21416_, p_21417_);&amp;#10;}&amp;#10;&amp;#10;public boolean isAlliedTo(Entity entity) {&amp;#10;if(getOwner() != null)&amp;#10;return owner.isAlliedTo(entity);&amp;#10;return super.isAlliedTo(entity);&amp;#10;\t}&amp;#10;&amp;#10;public boolean canModifyArmor = true;&amp;#10;public int lifeTime;&amp;#10;@Nullable&amp;#10;private LivingEntity owner;&amp;#10;@Nullable&amp;#10;private UUID ownerUUID;&amp;#10;&amp;#10;\tpublic void setOwner(@Nullable LivingEntity p_36939_) {&amp;#10;\t\tthis.owner = p_36939_;&amp;#10;\t\tthis.ownerUUID = p_36939_ == null ? null : p_36939_.getUUID();&amp;#10;\t}&amp;#10;&amp;#10;\t@Nullable&amp;#10;\tpublic LivingEntity getOwner() {&amp;#10;\t\tif (this.owner == null &amp;&amp; this.ownerUUID != null &amp;&amp; this.level() instanceof ServerLevel) {&amp;#10;\t\t\tEntity entity = ((ServerLevel) this.level()).getEntity(this.ownerUUID);&amp;#10;\t\t\tif (entity instanceof LivingEntity) {&amp;#10;\t\t\t\tthis.owner = (LivingEntity) entity;&amp;#10;\t\t\t}&amp;#10;\t\t}&amp;#10;\t\treturn this.owner;&amp;#10;\t}&amp;#10;&amp;#10;\tpublic void readAdditionalSaveData(CompoundTag p_36941_) {&amp;#10;\t\tsuper.readAdditionalSaveData(p_36941_);&amp;#10;\t\tif (p_36941_.hasUUID(\"Owner\")) {&amp;#10;\t\t\tthis.ownerUUID = p_36941_.getUUID(\"Owner\");&amp;#10;\t\t}&amp;#10;\t\tif (p_36941_.contains(\"lifeTime\", 99))&amp;#10;\t\t\tlifeTime = p_36941_.getInt(\"lifeTime\");&amp;#10;\t\tif (p_36941_.contains(\"canModifyArmor\", 99))&amp;#10;\t\t\tcanModifyArmor= p_36941_.getBoolean(\"canModifyArmor\");}&amp;#10;&amp;#10;\tpublic void addAdditionalSaveData(CompoundTag p_36943_) {&amp;#10;\t\tsuper.addAdditionalSaveData(p_36943_);&amp;#10;\t\tif (this.ownerUUID != null) {&amp;#10;\t\t\tp_36943_.putUUID(\"Owner\", this.ownerUUID);&amp;#10;\t\t}&amp;#10;\t\tp_36943_.putInt(\"lifeTime\", lifeTime);&amp;#10;\t\tp_36943_.putBoolean(\"canModifyArmor\", canModifyArmor);}&amp;#10;&amp;#10;{</field></block></next></block></xml>",
+    "breedable": false,
+    "tameable": false,
+    "breedTriggerItems": [],
+    "ranged": false,
+    "rangedAttackItem": {
+      "value": ""
+    },
+    "rangedItemType": "Default item",
+    "rangedAttackInterval": 20,
+    "rangedAttackRadius": 10.0,
+    "spawnThisMob": false,
+    "doesDespawnWhenIdle": false,
+    "spawningProbability": 20,
+    "mobSpawningType": "monster",
+    "minNumberOfMobsPerGroup": 4,
+    "maxNumberOfMobsPerGroup": 4,
+    "restrictionBiomes": [],
+    "spawnInDungeons": false,
+    "raidSpawnsCount": [
+      4,
+      3,
+      3,
+      4,
+      4,
+      4,
+      2
+    ],
+    "sensitiveToVibration": false,
+    "vibrationalEvents": [],
+    "vibrationSensitivityRadius": {
+      "fixedValue": 7.0
+    }
+  }
+}

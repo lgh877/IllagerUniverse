@@ -17,4 +17,5 @@ public class IllagerUniverseModSounds {
 	public static final RegistryObject<SoundEvent> UPGRADER_IDLE = REGISTRY.register("upgrader_idle", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("illager_universe", "upgrader_idle")));
 	public static final RegistryObject<SoundEvent> UPGRADER_DEATH = REGISTRY.register("upgrader_death", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("illager_universe", "upgrader_death")));
 	public static final RegistryObject<SoundEvent> UPGRADER_HURT = REGISTRY.register("upgrader_hurt", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("illager_universe", "upgrader_hurt")));
+	public static final RegistryObject<SoundEvent> UPGRADER_UPGRADE = REGISTRY.register("upgrader_upgrade", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("illager_universe", "upgrader_upgrade")));
 }

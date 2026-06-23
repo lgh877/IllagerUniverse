@@ -3,6 +3,7 @@ package net.sweegy.illageruniverse.entity;
 import net.sweegy.illageruniverse.procedures.BanditOnEntityTickUpdateProcedure;
 import net.sweegy.illageruniverse.init.IllagerUniverseModItems;
 import net.sweegy.illageruniverse.init.IllagerUniverseModEntities;
+import net.sweegy.illageruniverse.ICanWearArmors;
 import net.sweegy.illageruniverse.IActionStateMob;
 import net.sweegy.illageruniverse.DoNothingGoal;
 import net.sweegy.illageruniverse.ActionStateMobMeleeAttackSprintGoal;
@@ -37,7 +38,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.nbt.CompoundTag;
 
-public class BanditEntity extends AbstractIllager implements IActionStateMob {
+public class BanditEntity extends AbstractIllager implements IActionStateMob, ICanWearArmors {
 	public static final EntityDataAccessor<Integer> DATA_actionState = SynchedEntityData.defineId(BanditEntity.class, EntityDataSerializers.INT);
 	public static final EntityDataAccessor<Integer> DATA_modelPartsToHide = SynchedEntityData.defineId(BanditEntity.class, EntityDataSerializers.INT);
 	public final AnimationState animationState0 = new AnimationState();

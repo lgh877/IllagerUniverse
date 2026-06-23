@@ -14,6 +14,6 @@ public class UpgraderOnInitialEntitySpawnProcedure {
 		if (entity instanceof UpgraderEntity _datEntSetI)
 		_datEntSetI.getEntityData().set(UpgraderEntity.DATA_variant, (int)(world.getDifficulty()==Difficulty.PEACEFUL?0:Mth.nextInt(RandomSource.create(), 1, 10)));*/
 		UpgraderEntity mob = (UpgraderEntity) entity;
-		mob.getEntityData().set(UpgraderEntity.DATA_variant, Mth.nextInt(mob.getRandom(), 1, Math.min(1, world.getDifficulty().getId())) - 1);
+		mob.setVariant(Mth.nextInt(mob.getRandom(), 0, world.getDifficulty().getId()) - 1);
 	}
 }

@@ -64,12 +64,12 @@ public class ModelIllagerBandit<T extends Entity> extends EntityModel<T> {
 		PartDefinition LeftLeg = Torso.addOrReplaceChild("LeftLeg", CubeListBuilder.create().texOffs(0, 22).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(2.0F, 4.5F, 0.0F));
 		PartDefinition RightLeg = Torso.addOrReplaceChild("RightLeg", CubeListBuilder.create().texOffs(0, 22).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.0F, 4.5F, 0.0F));
 		PartDefinition RightArm = Torso.addOrReplaceChild("RightArm",
-				CubeListBuilder.create().texOffs(56, 46).addBox(-4.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.25F)).texOffs(40, 46).addBox(-4.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)),
-				PartPose.offset(-4.0F, -5.5F, 0.0F));
-		PartDefinition right_hand = RightArm.addOrReplaceChild("right_hand", CubeListBuilder.create(), PartPose.offset(-2.0F, 0.0F, 0.0F));
-		PartDefinition LeftArm = Torso.addOrReplaceChild("LeftArm", CubeListBuilder.create().texOffs(56, 46).mirror().addBox(0.0F, -1.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.25F)).mirror(false).texOffs(40, 46).mirror()
-				.addBox(0.0F, -1.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(4.0F, -6.5F, 0.0F));
-		PartDefinition left_hand = LeftArm.addOrReplaceChild("left_hand", CubeListBuilder.create(), PartPose.offset(2.0F, 1.0F, 0.0F));
+				CubeListBuilder.create().texOffs(56, 46).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.25F)).texOffs(40, 46).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)),
+				PartPose.offset(-5.0F, -5.5F, 0.0F));
+		PartDefinition right_hand = RightArm.addOrReplaceChild("right_hand", CubeListBuilder.create(), PartPose.offset(-1.0F, 0.0F, 0.0F));
+		PartDefinition LeftArm = Torso.addOrReplaceChild("LeftArm", CubeListBuilder.create().texOffs(56, 46).mirror().addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.25F)).mirror(false).texOffs(40, 46).mirror()
+				.addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(5.0F, -5.5F, 0.0F));
+		PartDefinition left_hand = LeftArm.addOrReplaceChild("left_hand", CubeListBuilder.create(), PartPose.offset(1.0F, 0.0F, 0.0F));
 		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
 

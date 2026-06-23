@@ -43,6 +43,10 @@ public class IllagerUniverseModEntities {
 			EntityType.Builder.<UpgraderEntity>of(UpgraderEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(UpgraderEntity::new)
 
 					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<UpgraderArmorEntity>> UPGRADER_ARMOR = register("upgrader_armor",
+			EntityType.Builder.<UpgraderArmorEntity>of(UpgraderArmorEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(UpgraderArmorEntity::new)
+
+					.sized(0.6f, 0.6f));
 
 	// Start of user code block custom entities
 	// End of user code block custom entities
@@ -58,6 +62,7 @@ public class IllagerUniverseModEntities {
 			BombagerEntity.init();
 			ShadowGoatEntity.init();
 			UpgraderEntity.init();
+			UpgraderArmorEntity.init();
 		});
 	}
 
@@ -68,5 +73,6 @@ public class IllagerUniverseModEntities {
 		event.put(BOMBAGER.get(), BombagerEntity.createAttributes().build());
 		event.put(SHADOW_GOAT.get(), ShadowGoatEntity.createAttributes().build());
 		event.put(UPGRADER.get(), UpgraderEntity.createAttributes().build());
+		event.put(UPGRADER_ARMOR.get(), UpgraderArmorEntity.createAttributes().build());
 	}
 }

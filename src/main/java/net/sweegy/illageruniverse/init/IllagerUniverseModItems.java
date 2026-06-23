@@ -26,6 +26,7 @@ public class IllagerUniverseModItems {
 	public static final RegistryObject<Item> FORK;
 	public static final RegistryObject<Item> SHADOW_GOAT_SPAWN_EGG;
 	public static final RegistryObject<Item> UPGRADER_SPAWN_EGG;
+	public static final RegistryObject<Item> UPGRADER_ARMOR_SPAWN_EGG;
 	static {
 		IRON_CUTLASS = REGISTRY.register("iron_cutlass", IronCutlassItem::new);
 		BANDIT_SPAWN_EGG = REGISTRY.register("bandit_spawn_egg", () -> new ForgeSpawnEggItem(IllagerUniverseModEntities.BANDIT, -1, -1, new Item.Properties()));
@@ -36,6 +37,7 @@ public class IllagerUniverseModItems {
 		FORK = REGISTRY.register("fork", ForkItem::new);
 		SHADOW_GOAT_SPAWN_EGG = REGISTRY.register("shadow_goat_spawn_egg", () -> new ForgeSpawnEggItem(IllagerUniverseModEntities.SHADOW_GOAT, -1, -1, new Item.Properties()));
 		UPGRADER_SPAWN_EGG = REGISTRY.register("upgrader_spawn_egg", () -> new ForgeSpawnEggItem(IllagerUniverseModEntities.UPGRADER, -1, -1, new Item.Properties()));
+		UPGRADER_ARMOR_SPAWN_EGG = REGISTRY.register("upgrader_armor_spawn_egg", () -> new ForgeSpawnEggItem(IllagerUniverseModEntities.UPGRADER_ARMOR, -1, -1, new Item.Properties()));
 	}
 	// Start of user code block custom items
 	// End of user code block custom items

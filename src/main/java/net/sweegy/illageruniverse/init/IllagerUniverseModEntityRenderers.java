@@ -20,5 +20,6 @@ public class IllagerUniverseModEntityRenderers {
 		event.registerEntityRenderer(IllagerUniverseModEntities.BOMBAGER.get(), BombagerRenderer::new);
 		event.registerEntityRenderer(IllagerUniverseModEntities.SHADOW_GOAT.get(), ShadowGoatRenderer::new);
 		event.registerEntityRenderer(IllagerUniverseModEntities.UPGRADER.get(), UpgraderRenderer::new);
+		event.registerEntityRenderer(IllagerUniverseModEntities.UPGRADER_ARMOR.get(), UpgraderArmorRenderer::new);
 	}
 }

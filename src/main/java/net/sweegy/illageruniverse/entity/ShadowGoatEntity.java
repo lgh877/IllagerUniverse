@@ -2,6 +2,7 @@ package net.sweegy.illageruniverse.entity;
 
 import net.sweegy.illageruniverse.procedures.ShadowGoatOnEntityTickUpdateProcedure;
 import net.sweegy.illageruniverse.init.IllagerUniverseModEntities;
+import net.sweegy.illageruniverse.ICanWearArmors;
 import net.sweegy.illageruniverse.IActionStateMob;
 import net.sweegy.illageruniverse.FadingOutAnimation;
 import net.sweegy.illageruniverse.DoNothingGoal;
@@ -45,7 +46,7 @@ import net.minecraft.core.BlockPos;
 import java.util.List;
 import java.util.ArrayList;
 
-public class ShadowGoatEntity extends Raider implements IActionStateMob {
+public class ShadowGoatEntity extends Raider implements IActionStateMob, ICanWearArmors {
 	public static final EntityDataAccessor<Integer> DATA_actionState = SynchedEntityData.defineId(ShadowGoatEntity.class, EntityDataSerializers.INT);
 
 	public ShadowGoatEntity(PlayMessages.SpawnEntity packet, Level world) {

@@ -3,6 +3,7 @@ package net.sweegy.illageruniverse.entity;
 import net.sweegy.illageruniverse.procedures.QuivagerOnEntityTickUpdateProcedure;
 import net.sweegy.illageruniverse.init.IllagerUniverseModItems;
 import net.sweegy.illageruniverse.init.IllagerUniverseModEntities;
+import net.sweegy.illageruniverse.ICanWearArmors;
 import net.sweegy.illageruniverse.IActionStateMob;
 import net.sweegy.illageruniverse.DoNothingGoal;
 import net.sweegy.illageruniverse.ActionStateMobMeleeAttackSprintGoal;
@@ -36,7 +37,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.nbt.CompoundTag;
 
-public class QuivagerEntity extends AbstractIllager implements IActionStateMob {
+public class QuivagerEntity extends AbstractIllager implements IActionStateMob, ICanWearArmors {
 	public static final EntityDataAccessor<Integer> DATA_actionState = SynchedEntityData.defineId(QuivagerEntity.class, EntityDataSerializers.INT);
 
 	public QuivagerEntity(PlayMessages.SpawnEntity packet, Level world) {

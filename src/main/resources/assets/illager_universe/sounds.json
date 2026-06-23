@@ -57,5 +57,14 @@
         "stream": false
       }
     ]
+  },
+  "upgrader_upgrade": {
+    "subtitle": "subtitles.upgrader_upgrade",
+    "sounds": [
+      {
+        "name": "illager_universe:upgrader_upgrade",
+        "stream": false
+      }
+    ]
   }
 }

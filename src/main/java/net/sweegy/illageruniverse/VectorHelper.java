@@ -47,7 +47,7 @@ public class VectorHelper {
 	 * @return   The required initial horizontal velocity component.
 	 */
 	public static double getRequiredVelocityFlat(double d, int n, double f) {
-		double S = f * (1 - Math.pow(f, n)) / (1 - f);
+		double S = (1 - Math.pow(f, n)) / (1 - f);
 		return d / S;
 	}
 
@@ -62,7 +62,7 @@ public class VectorHelper {
 	 * @return   The required initial vertical velocity component.
 	 */
 	public static double getRequiredVelocity(double d, int n, double f, double g) {
-		double S = f * (1 - Math.pow(f, n)) / (1 - f);
+		double S = (1 - Math.pow(f, n)) / (1 - f);
 		double v_term = (-g * f) / (1 - f);
 		double gravityDist = v_term * (n - S / f);
 		return (d - gravityDist) / S;

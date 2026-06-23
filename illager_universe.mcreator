@@ -542,6 +542,147 @@
         ]
       },
       "path": "~/interfaces"
+    },
+    {
+      "name": "AvoidTargetGoal",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "avoid_target_goal",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/AvoidTargetGoal.java"
+        ]
+      },
+      "path": "~/goals"
+    },
+    {
+      "name": "AvoidTargetGoalSprint",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "avoid_target_goal_sprint",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/AvoidTargetGoalSprint.java"
+        ]
+      },
+      "path": "~/goals"
+    },
+    {
+      "name": "IMobFollower",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "i_mob_follower",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/IMobFollower.java"
+        ]
+      },
+      "path": "~/interfaces"
+    },
+    {
+      "name": "SetFollowingMobGoal",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "set_following_mob_goal",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/SetFollowingMobGoal.java"
+        ]
+      },
+      "path": "~/goals"
+    },
+    {
+      "name": "NearestFollowableMobGoal",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "nearest_followable_mob_goal",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/NearestFollowableMobGoal.java"
+        ]
+      },
+      "path": "~/goals"
+    },
+    {
+      "name": "FollowMobIndirectly",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "follow_mob_indirectly",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/FollowMobIndirectly.java"
+        ]
+      },
+      "path": "~/goals"
+    },
+    {
+      "name": "UpgraderArmor",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "upgrader_armor",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/entity/UpgraderArmorEntity.java",
+          "src/main/resources/assets/illager_universe/models/item/upgrader_armor_spawn_egg.json",
+          "src/main/java/net/sweegy/illageruniverse/client/renderer/UpgraderArmorRenderer.java"
+        ]
+      },
+      "path": "~/mobs/upgrader"
+    },
+    {
+      "name": "UpgraderArmorOnEntityTickUpdate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "upgrader_armor_on_entity_tick_update",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/procedures/UpgraderArmorOnEntityTickUpdateProcedure.java"
+        ]
+      },
+      "path": "~/mobs/upgrader"
+    },
+    {
+      "name": "UpgraderArmorSetsRegistry",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "upgrader_armor_sets_registry",
+      "metadata": {
+        "files": [
+          "src/main/java/net/sweegy/illageruniverse/UpgraderArmorSetsRegistry.java"
+        ]
+      },
+      "path": "~/registryLikeThings"
     }
   ],
   "variable_elements": [],
@@ -577,6 +718,14 @@
       ],
       "category": "hostile",
       "subtitle": "Upgrader is damaged"
+    },
+    {
+      "name": "upgrader_upgrade",
+      "files": [
+        "upgrader_upgrade"
+      ],
+      "category": "hostile",
+      "subtitle": "Upgrader is preparing an upgrade"
     }
   ],
   "tag_elements": {
@@ -608,7 +757,10 @@
       "item.illager_universe.upgrader_spawn_egg": "Upgrader Spawn Egg",
       "subtitles.upgrader_idle": "Upgrader says",
       "subtitles.upgrader_death": "Upgrader dies",
-      "subtitles.upgrader_hurt": "Upgrader is damaged"
+      "subtitles.upgrader_hurt": "Upgrader is damaged",
+      "subtitles.upgrader_upgrade": "Upgrader is preparing an upgrade",
+      "entity.illager_universe.upgrader_armor": "Upgrader Armor",
+      "item.illager_universe.upgrader_armor_spawn_egg": "Upgrader Armor Spawn Egg"
     }
   },
   "metadata": {
