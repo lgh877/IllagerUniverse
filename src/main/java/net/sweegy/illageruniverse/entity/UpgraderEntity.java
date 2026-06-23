@@ -182,6 +182,8 @@ public class UpgraderEntity extends Raider implements IActionStateMob, IMobFollo
 		}
 	}
 
+	private EntityBoundSoundInstance upgradeSoundInstance;
+
 	public void onSyncedDataUpdated(EntityDataAccessor<?> p_21104_) {
 		super.onSyncedDataUpdated(p_21104_);
 		if (level().isClientSide()) {
@@ -190,11 +192,14 @@ public class UpgraderEntity extends Raider implements IActionStateMob, IMobFollo
 					getFadingAnims().add(new FadingOutAnimation(getFadingAnims(), animTicks, Math.min(animTicks, 5), prevActionState));
 				prevActionState = animIdx = entityData.get(DATA_actionState);
 				animTicks = animTicksO = fadeInTicks = 0;
-				if (animIdx == 1)
-					Minecraft.getInstance().getSoundManager().play(//
-							new EntityBoundSoundInstance(ForgeRegistries.SOUND_EVENTS.getValue(//
-									new ResourceLocation("illager_universe:upgrader_upgrade"))//
-									, SoundSource.HOSTILE, 1f, 1f, this, RandomSource.create().nextLong()));
+				if (animIdx != 1 && this.upgradeSoundInstance != null) {
+					Minecraft.getInstance().getSoundManager().stop(this.upgradeSoundInstance);
+					this.upgradeSoundInstance = null;
+				}
+				if (animIdx == 1) {
+					this.upgradeSoundInstance = new EntityBoundSoundInstance(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("illager_universe:upgrader_upgrade")), SoundSource.HOSTILE, 1f, 1f, this, RandomSource.create().nextLong());
+					Minecraft.getInstance().getSoundManager().play(this.upgradeSoundInstance);
+				}
 			}
 		}
 	}
