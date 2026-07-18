@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "illager_universe:item/iron_cutlass"
+  }
+}

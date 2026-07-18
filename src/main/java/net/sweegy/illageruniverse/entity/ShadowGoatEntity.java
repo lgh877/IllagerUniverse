@@ -101,8 +101,6 @@ public class ShadowGoatEntity extends Raider implements IActionStateMob, ICanWea
 	}
 
 	public List<FadingOutAnimation> getFadingAnims() {
-		//if (fadingAnims == null)
-		//	fadingAnims = new ArrayList<FadingOutAnimation>();
 		return fadingAnims;
 	}
 

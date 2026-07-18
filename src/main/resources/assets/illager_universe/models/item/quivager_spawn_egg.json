@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "illager_universe:item/quivager_spawn_egg"
+  }
+}
