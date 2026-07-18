@@ -17,7 +17,7 @@ The source code of this modification (e.g., `.java`, `.kt`, or other programming
 * **Code Reuse:** You are permitted to reuse, adapt, or copy-paste portions of the source code into your own independent projects or modifications.
 
 ### Conditions:
-* **Attribution:** If you reuse or adapt any significant portion of this source code, you must provide clear and visible credit to the original author ([Your Name or Nickname]) within your source code repository and/or the documentation of your project.
+* **Attribution:** If you reuse or adapt any significant portion of this source code, you must provide clear and visible credit to the original author Sweegy within your source code repository and/or the documentation of your project.
 
 ---
 
